@@ -6,7 +6,7 @@ import routers.demo_service
 import uvicorn
 
 app = fastapi.FastAPI()
-app.include_router(routers.demo_service.router, tags=["demo"])
+app.include_router(routers.demo_service.router)
 
 
 if __name__ == "__main__":

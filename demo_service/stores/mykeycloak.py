@@ -40,7 +40,26 @@ def lib_login(username, password):
     return token
 
 
+def get_access_code(redirect_uri):
+    access_code = keycloak_openid.auth_url(redirect_uri=redirect_uri)
+    return access_code
+
+
+def get_token_from_code(code, redirect_uri):
+    logger.info(redirect_uri)
+    token = keycloak_openid.token(
+        grant_type=["authorization_code"], code=code, redirect_uri=redirect_uri
+    )
+    return token
+
+
+def logout(token):
+    keycloak_openid.logout(token["refresh_token"])
+    return "successfully logged out"
+
+
 def decode_token(token):
+
     KEYCLOAK_PUBLIC_KEY = (
         "-----BEGIN PUBLIC KEY-----\n"
         + keycloak_openid.public_key()
