@@ -1,14 +1,12 @@
 """fast api playground"""
 import fastapi
 from fastapi import status
-import routers.a_services
-import env
-import exceptions
+import routers.demo_service
 
 import uvicorn
 
 app = fastapi.FastAPI()
-app.include_router(routers.a_services.router, tags=["a_service"], prefix="/a/v1")
+app.include_router(routers.demo_service.router, tags=["demo"])
 
 
 if __name__ == "__main__":

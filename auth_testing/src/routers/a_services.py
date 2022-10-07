@@ -72,6 +72,22 @@ async def redirect3():
     return response
 
 
+@router.get("/client/service")
+async def client_service():
+    body = {
+        "client_id": "internal",
+        "client_secret": "qh0Lh2X4O0YevRvKechlrZYDJABEl4gm",
+        "grant_type": "client_credentials",
+    }
+
+    response = requests.post(
+        "http://127.0.0.1:30769/realms/atal/protocol/openid-connect/token",
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+        data=body,
+    )
+    return response.json()
+
+
 @router.post("/login")
 def login(form_data: OAuth2PasswordRequestForm = Depends()):
     token = services.auth.login(form_data.username, form_data.password)
