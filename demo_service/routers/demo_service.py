@@ -94,13 +94,13 @@ async def lib_login(form_data: OAuth2PasswordRequestForm = Depends()):
 
 @router.get("/authorize", tags=["login"])
 async def get_access_code():
-    url = keycloak_openid.auth_url(BASE_URL + "/oauth/token2")
+    url = keycloak_openid.auth_url(BASE_URL + "/oauth/token")
     logger.info(f"{url}")
     response = RedirectResponse(url)
     return response
 
 
-@router.get("/oauth/token", tags=["login"])
+@router.get("/oauth/token2", tags=["login"])
 async def get_access_code_redirect(response: Response, code):
     token = keycloak_openid.token(
         grant_type=["authorization_code"],
@@ -111,13 +111,18 @@ async def get_access_code_redirect(response: Response, code):
     return "login successful, token stored in cookie"
 
 
-@router.get("/oauth/token2", tags=["login"])
-async def get_access_code_redirect(response: Response, code):
-    token = keycloak_openid.token(
-        grant_type=["authorization_code"],
-        code=code,
-        redirect_uri=BASE_URL + "/oauth/token",
-    )
+@router.get("/oauth/token", tags=["login"])
+async def get_access_code_redirect(
+    response: Response,
+    code: Union[str, None] = None,
+):
+    if code:
+        token = keycloak_openid.token(
+            grant_type=["authorization_code"],
+            code=code,
+            redirect_uri=BASE_URL + "/oauth/token",
+        )
+
     response.set_cookie(key="token", value=token)
     return "login successful, token stored in cookie"
 
