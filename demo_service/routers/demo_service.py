@@ -1,3 +1,4 @@
+from multiprocessing.managers import Token
 from typing import Union, Optional
 import fastapi
 from fastapi import status, Depends, Cookie
@@ -5,6 +6,7 @@ import requests
 import json
 import stores.mykeycloak
 from fastapi import HTTPException, status, Response, Request
+import keycloak.exceptions
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.security import (
     HTTPBearer,
@@ -35,13 +37,14 @@ keycloak_openid = KeycloakOpenID(
 )
 
 
-def decode_token(token):
+KEYCLOAK_PUBLIC_KEY = (
+    "-----BEGIN PUBLIC KEY-----\n"
+    + keycloak_openid.public_key()
+    + "\n-----END PUBLIC KEY-----"
+)
 
-    KEYCLOAK_PUBLIC_KEY = (
-        "-----BEGIN PUBLIC KEY-----\n"
-        + keycloak_openid.public_key()
-        + "\n-----END PUBLIC KEY-----"
-    )
+
+def decode_token(token):
     logger.info(KEYCLOAK_PUBLIC_KEY)
     options = {"verify_signature": True, "verify_aud": False, "verify_exp": True}
     try:
@@ -49,12 +52,12 @@ def decode_token(token):
             token, key=KEYCLOAK_PUBLIC_KEY, options=options
         )
 
-    except HTTPException as e:
+    except (HTTPException, BaseException) as e:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="HTTP_401_UNAUTHORIZED"
         ) from e
     logger.info(f"token info : {token_info}")
-    return token_info
+    return token
 
 
 def manual_login(username, password):
@@ -75,9 +78,34 @@ def manual_login(username, password):
     return response.json()
 
 
+def get_token(token: Optional[str] = Cookie(None)):
+    if not token:
+        logger.info("token not provided")
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN, detail="HTTP_403_FORBIDDEN"
+        )
+    token_json = json.loads(token.replace("'", '"'))
+    return decode_token(token_json["access_token"])
+
+
 @router.get("/")
 async def hello_world():
     return "hello world"
+
+
+@router.get("/redir_for_access_code")
+async def redirect_uri(
+    response: Response,
+    state: str,
+    code: Union[str, None] = None,
+):
+    logger.info(f"code: {code}")
+    return code
+
+
+@router.get("/a")
+async def hello_world_with_auth(token=Depends(get_token)):
+    return "hello world with auth"
 
 
 @router.post("/manual_login", tags=["login"])
@@ -92,45 +120,88 @@ async def lib_login(form_data: OAuth2PasswordRequestForm = Depends()):
     return token
 
 
+# @router.get("/authorize2", tags=["login"])
+# async def get_access_code_2():
+#     url = keycloak_openid.auth_url(BASE_URL + "/oauth/token")
+#     logger.info(f"{url}")
+#     response = RedirectResponse(url)
+#     return response
+
+
 @router.get("/authorize", tags=["login"])
-async def get_access_code():
-    url = keycloak_openid.auth_url(BASE_URL + "/oauth/token")
+async def get_access_code(
+    state: str = "123",
+    redir_url: str = "http://127.0.0.1:8077/redir_for_access_code",
+):
+    url = keycloak_openid.auth_url(redir_url, state=state)
     logger.info(f"{url}")
     response = RedirectResponse(url)
     return response
 
 
-@router.get("/oauth/token2", tags=["login"])
-async def get_access_code_redirect(response: Response, code):
-    token = keycloak_openid.token(
-        grant_type=["authorization_code"],
-        code=code,
-        redirect_uri=BASE_URL + "/oauth/token",
-    )
-    response.set_cookie(key="token", value=token)
-    return "login successful, token stored in cookie"
-
-
 @router.get("/oauth/token", tags=["login"])
 async def get_access_code_redirect(
     response: Response,
-    code: Union[str, None] = None,
+    client_id: str = None,
+    client_secret: str = None,
+    redirect_uri: str = "http://127.0.0.1:8077/redir_for_access_code",
+    code: str = None,
 ):
     if code:
         token = keycloak_openid.token(
-            grant_type=["authorization_code"],
-            code=code,
-            redirect_uri=BASE_URL + "/oauth/token",
+            grant_type=["authorization_code"], code=code, redirect_uri=redirect_uri
         )
-
+    else:
+        token = keycloak_openid.token(
+            grant_type=["client_credentials"],
+            client_secret=client_secret,
+            redirect_uri=redirect_uri,
+        )
     response.set_cookie(key="token", value=token)
-    return "login successful, token stored in cookie"
+    return {"message": "login successful, token stored in cookie", "token": token}
 
 
 @router.get("/oauth/logout/1", tags=["logout"])
-async def logout(response: Response, token: Union[str, None] = Cookie(dfault=None)):
+async def logout(response: Response, token: Optional[str] = Cookie(None)):
+    if not token:
+        return "token not found."
     result = keycloak_openid.logout(
         json.loads(token.replace("'", '"'))["refresh_token"]
     )
+    logger.info(f" logout output: {result}")
     response.delete_cookie("token")
-    return result
+    return "logout successfully"
+
+
+@router.get("/get_user_permissions", tags=["auth"])
+async def get_user_permissions(token=Depends(get_token)):
+    # keycloak_openid.load_authorization_config(
+    #     "/Users/williamleung/Documents/fastapi_playground/demo_service/test-authz-config.json"
+    # )
+    permissions = keycloak_openid.uma_permissions(token)
+    logger.info(f"permissions : {permissions}")
+    return "hi"
+
+
+@router.get("/get_user_permissions_specific", tags=["auth"])
+async def get_user_permissions(token=Depends(get_token)):
+    # keycloak_openid.load_authorization_config(
+    #     "/Users/williamleung/Documents/fastapi_playground/demo_service/test-authz-config.json"
+    # )
+    try:
+        permissions = keycloak_openid.uma_permissions(
+            token, permissions="resource_a#read"
+        )
+        logger.info(f"permissions : {permissions}")
+    except keycloak.exceptions.KeycloakError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="HTTP_401_UNAUTHORIZED"
+        )
+    return "hi"
+
+
+@router.get("/get_user_permissions_auth_status", tags=["auth"])
+async def get_user_permissions_auth_status(token=Depends(get_token)):
+    auth_status = keycloak_openid.has_uma_access(token, "resourcasdfg#read")
+    logger.info(f"auth_status: {auth_status}")
+    return auth_status

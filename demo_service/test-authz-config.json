@@ -1,0 +1,140 @@
+{
+  "allowRemoteResourceManagement": true,
+  "policyEnforcementMode": "ENFORCING",
+  "resources": [
+    {
+      "name": "Default Resource",
+      "type": "urn:demo_service:resources:default",
+      "ownerManagedAccess": false,
+      "attributes": {},
+      "_id": "d0bfc2da-7842-4d12-84e6-2aed0ed64c41",
+      "uris": [
+        "/*"
+      ]
+    },
+    {
+      "name": "resource_a",
+      "ownerManagedAccess": true,
+      "attributes": {
+        "resource_a_key_1": [
+          "a_value_1"
+        ]
+      },
+      "_id": "a71e491e-cf26-4df9-add1-e324d9f146c9",
+      "uris": [],
+      "scopes": [
+        {
+          "name": "read"
+        },
+        {
+          "name": "edit"
+        }
+      ],
+      "icon_uri": ""
+    },
+    {
+      "name": "resource_b",
+      "ownerManagedAccess": true,
+      "attributes": {},
+      "_id": "33200495-bef4-4dc9-8207-cc46db2a6f01",
+      "uris": [],
+      "scopes": [
+        {
+          "name": "read"
+        },
+        {
+          "name": "edit"
+        }
+      ],
+      "icon_uri": ""
+    }
+  ],
+  "policies": [
+    {
+      "id": "4b0e249d-445e-415f-bb93-3aac6d3ec559",
+      "name": "Default Policy",
+      "description": "A policy that grants access only for users within this realm",
+      "type": "js",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "code": "// by default, grants any permission associated with this policy\n$evaluation.grant();\n"
+      }
+    },
+    {
+      "id": "7b120779-ad7f-480c-9507-2955a8791deb",
+      "name": "member",
+      "description": "",
+      "type": "group",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "groups": "[{\"path\":\"/gp_a\",\"extendChildren\":true}]",
+        "groupsClaim": ""
+      }
+    },
+    {
+      "id": "ee9bcc6b-7bea-4b08-afdc-c3b0b9435581",
+      "name": "admin",
+      "description": "",
+      "type": "group",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "groups": "[{\"path\":\"/gp_a/gpa_admin\",\"extendChildren\":false}]",
+        "groupsClaim": ""
+      }
+    },
+    {
+      "id": "3a9fd8f4-a41d-42a5-a870-dcabe28fcef4",
+      "name": "Default Permission",
+      "description": "A permission that applies to the default resource type",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "defaultResourceType": "urn:demo_service:resources:default",
+        "applyPolicies": "[\"Default Policy\"]"
+      }
+    },
+    {
+      "id": "165eb12f-0817-4e4c-b105-7075d37d72eb",
+      "name": "a",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"resource_a\"]",
+        "scopes": "[\"read\"]",
+        "applyPolicies": "[\"member\"]"
+      }
+    },
+    {
+      "id": "419d3289-b113-4cce-b0a5-69c08115c616",
+      "name": "a_admin",
+      "description": "",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"resource_a\"]",
+        "scopes": "[\"edit\"]",
+        "applyPolicies": "[\"admin\"]"
+      }
+    }
+  ],
+  "scopes": [
+    {
+      "id": "f7608f63-bea2-452d-8d5f-d08cad58fc9f",
+      "name": "edit",
+      "iconUri": ""
+    },
+    {
+      "id": "e7e5f8f8-36cf-4e6c-8e0b-ec2d86d190bb",
+      "name": "read",
+      "iconUri": ""
+    }
+  ],
+  "decisionStrategy": "UNANIMOUS"
+}
