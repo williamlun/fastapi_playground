@@ -27,7 +27,7 @@ BASE_URL = "http://127.0.0.1:8077"
 _url = "http://127.0.0.1:8080"
 _realms = "atal"
 _client_id = "demo_service"
-_client_secret = "hsRRjJta9TDb7s6gM6ChBOyTPt0sp8QM"
+_client_secret = "Oav1GLwKZdDIBySvnMv7tGgZJjwZyqGh"
 
 keycloak_openid = KeycloakOpenID(
     server_url=_url,
@@ -38,7 +38,7 @@ keycloak_openid = KeycloakOpenID(
 
 keycloak_admin = KeycloakAdmin(
     server_url="http://localhost:8080",
-    username="user_admin",
+    username="user_super_admin",
     password="p",
     realm_name="atal",
     verify=True,
@@ -242,9 +242,9 @@ async def get_users():
     keycloak_admin.realm_name = "atal"
     users = keycloak_admin.get_users({})
     logger.info(f"user_list : {users}")
-    user_id = "ad6ceeb5-891a-4073-b328-1506406df42c"
+    user_id = "cf45447c-418c-4336-9c2a-88aa26f7c888"
 
-    clients_id = keycloak_admin.get_client_id(_client_id)
+    clients_id = keycloak_admin.get_client_id("demo")
     logger.info(f"clients: {clients_id}")
 
     consents = keycloak_admin.user_consents(user_id=user_id)

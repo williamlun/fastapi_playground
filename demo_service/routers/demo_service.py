@@ -6,6 +6,7 @@ import requests
 import json
 from fastapi import HTTPException, status, Response, Request
 import keycloak.exceptions
+import keycloak.uma_permissions
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.security import (
     HTTPBearer,
@@ -26,7 +27,7 @@ BASE_URL = "http://127.0.0.1:8077"
 _url = "http://127.0.0.1:8080"
 _realms = "atal"
 _client_id = "demo_service"
-_client_secret = "hsRRjJta9TDb7s6gM6ChBOyTPt0sp8QM"
+_client_secret = "Oav1GLwKZdDIBySvnMv7tGgZJjwZyqGh"
 
 keycloak_openid = KeycloakOpenID(
     server_url=_url,
@@ -167,47 +168,112 @@ async def get_user_permissions(token=Depends(get_cookie_token)):
     return {"permissions": permissions}
 
 
-@router.get("/demo_service/data/a", tags=["demo"])
-async def get_test_without_auth():
-    data = "Data response without Authentication."
+@router.get("/demo_service/data/a/{device}", tags=["demo"])
+async def get_test_without_auth(device: str = None):
+    data = f"Data response of device: {device} without Authentication."
     return {"data": data}
 
 
-@router.get("/demo_service/data/b", tags=["demo"])
-async def get_test2(token=Depends(get_bearer_token)):
-    data = "Data response with Authentication. (Get token from bearer)"
+@router.get("/demo_service/data/b/{device}", tags=["demo"])
+async def get_test2(token=Depends(get_bearer_token), device: str = None):
+    data = f"Data response of device: {device} with Authentication. (Get token from bearer)"
     return {"data": data}
 
 
-@router.get("/demo_service/data/c", tags=["demo"])
-async def get_test(token=Depends(get_cookie_token)):
-    data = "Data response with Authentication. (Get token from cookie.)"
+@router.get("/demo_service/data/c/{device}", tags=["demo"])
+async def get_test(token=Depends(get_cookie_token), device: str = None):
+    data = f"Data response of device: {device} with Authentication. (Get token from cookie.)"
     return {"data": data}
 
 
-@router.get("/demo_service/site/{site}/cookie", tags=["auth"])
-async def get_test(code: str, site: str, token=Depends(get_cookie_token)):
-    data = "Data response"
+@router.get(
+    "/demo_service/site/{site}/devices/{device}/real-time-sensor-data", tags=["auth"]
+)
+async def get_data_demo(site: str, device: str, token=Depends(get_cookie_token)):
+    data = f"site: {site}, device: {device}, demo real-time-sensor-data"
+
+    auth_status = keycloak_openid.has_uma_access(token, f"{site}#read")
+    logger.info(f"auth_status: {auth_status}")
+    if not auth_status.is_authorized:
+        return "Unauthorized"
     return data
 
 
-@router.get("/demo_service/site/{site}/devices/{device}", tags=["auth"])
-async def get_user_permissions(site: str, token=Depends(get_cookie_token)):
-    # keycloak_openid.load_authorization_config(
-    #     "/Users/williamleung/Documents/fastapi_playground/demo_service/test-authz-config.json"
-    # )
-    try:
-        permissions = keycloak_openid.uma_permissions(token, permissions=f"{site}#read")
-        logger.info(f"permissions : {permissions}")
-    except keycloak.exceptions.KeycloakError:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED, detail="HTTP_401_UNAUTHORIZED"
-        )
-    return "pass"
+@router.get("/demo_service/site/{site}/devices/{device}/ack", tags=["auth"])
+async def get_data_demo(site: str, device: str, token=Depends(get_cookie_token)):
+    data = f"site: {site}, device: {device}, demo ack"
+
+    auth_status = keycloak_openid.has_uma_access(token, f"{site}#write")
+    logger.info(f"auth_status: {auth_status}")
+    if not auth_status.is_authorized:
+        return "Unauthorized"
+    return data
 
 
-@router.get("/user/auth/status", tags=["auth"])
+#################################################################
+#################################################################
+#################################################################
+#################################################################
+#################################################################
+#################################################################
+
+
+@router.get("/user/auth/status1", tags=["auth"])
 async def get_user_permissions_auth_status(token=Depends(get_cookie_token)):
+    # auth_status = keycloak_openid.uma_permissions(token, "test#read")
+
+    permissions1 = keycloak_openid.uma_permissions(token)
+    logger.info(f" permissions : {permissions1}")
+    permissions2 = keycloak_openid.uma_permissions(
+        token, permissions="Default Resource#read"
+    )
+    logger.info(f"permissions2: {permissions2}")
+    auth_status = keycloak_openid.has_uma_access(token, "Default Resource#read")
+    logger.info(f"auth_status: {auth_status}")
+
+    # permissions3 = keycloak_openid.uma_permissions(
+    #     token, permissions="site_a_room101#read"
+    # )
+    # logger.info(f"auth_status3: {permissions3}")
+
+    return "DLLm"
+
+
+@router.get("/user/auth/status2", tags=["auth"])
+async def get_user_permissions_auth_status(token=Depends(get_cookie_token)):
+    # auth_status = keycloak_openid.uma_permissions(token, "test#read")
+
+    permissions1 = keycloak_openid.uma_permissions(token)
+    logger.info(f" permissions : {permissions1}")
+    permissions2 = keycloak_openid.uma_permissions(
+        token, permissions="site_a_room101#read"
+    )
+    logger.info(f"auth_status3: {permissions2}")
+
     auth_status = keycloak_openid.has_uma_access(token, "site_a_room101#read")
     logger.info(f"auth_status: {auth_status}")
-    return auth_status
+    if not auth_status.is_authorized:
+        return "Unauthorized"
+    return "authorized"
+
+
+@router.get("/authorize2", tags=["login"])
+async def get_access_code2(
+    client_id: str,
+    state: str,
+    redirect_uri: str,
+):
+    keycloak_openid2 = KeycloakOpenID(
+        server_url=_url,
+        client_id="fake_service",
+        realm_name=_realms,
+        client_secret_key="0yJoWGTSBmnJ3KEuvvyzt4EzBmgttOhb",
+    )
+    if client_id != "fake_service":
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, detail="invalid client id."
+        )
+    url = keycloak_openid2.auth_url(redirect_uri, state=state)
+    logger.info(f"{url}")
+    response = RedirectResponse(url)
+    return response
