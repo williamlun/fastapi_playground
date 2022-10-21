@@ -47,7 +47,11 @@ class ClinetAuthorizationSettings(pydantic.BaseModel):
     decisionStrategy: str = "AFFIRMATIVE"
 
 
-class KeyCloakClient(pydantic.BaseModel):
+class BaseClient(pydantic.BaseModel):
+    client_uuid: str = ""
+
+
+class KeyCloakClient(BaseClient):
     clientId: str
     name: str = ""
     description: str = ""
@@ -75,7 +79,7 @@ class KeyCloakClient(pydantic.BaseModel):
     authorizationSettings: ClinetAuthorizationSettings = ClinetAuthorizationSettings()
 
 
-class BaseScope(pydantic.BaseModel):
+class BaseScope(BaseClient):
     displayName: str = ""
     iconUri: str = ""
     id: str = ""
@@ -85,7 +89,7 @@ class Scope(BaseScope):
     name: str
 
 
-class Resource(pydantic.BaseModel):
+class Resource(BaseClient):
     name: str
     type: str = ""
     icon_uri: str = ""
@@ -94,7 +98,7 @@ class Resource(pydantic.BaseModel):
     _id: str = ""
 
 
-class GroupBasePolicy(pydantic.BaseModel):
+class GroupBasePolicy(BaseClient):
     class UserGroup(pydantic.BaseModel):
         id: uuid.UUID
         extenChildren: bool = False
@@ -107,7 +111,7 @@ class GroupBasePolicy(pydantic.BaseModel):
     scopes: list[UserGroup] = []
 
 
-class ScopeBasePermission(pydantic.BaseModel):
+class ScopeBasePermission(BaseClient):
     name: str
     id: str = ""
     description: str = ""
