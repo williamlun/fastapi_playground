@@ -1,4 +1,3 @@
-from abc import update_abstractmethods
 import pydantic
 import uuid
 import enum
@@ -7,6 +6,12 @@ import enum
 class ResourceType(enum.Enum):
     REALMS = "realms"
     USERGROUP = "user_group"
+    USER = "user"
+    CLIENT = "client"
+    SCPOES = "scpoes"
+    POLICY = "policy"
+    RESOURCE = "resource"
+    PERMISSION = "permission"
 
 
 def to_camel(string: str) -> str:
@@ -46,27 +51,27 @@ class User(ImportModel):
     enabled: bool = True
     first_name: str = ""
     last_name: str = ""
-    credentials: list[Credentials]
-    groups: list[str]
+    credentials: list[Credentials] = [Credentials()]
+    groups: list[str] = ""
     required_actions: list[UserAction] = [UserAction.UPDATE_PASSWORD]
 
 
-class PolicyGroup(ImportModel):
-    id: str = ""
-
-
-class Group(PolicyGroup):
-    path: str = ""
+class Group(ImportModel):
     name: str
+    id: str = ""
+    path: str = ""
 
 
 class ClinetAuthorizationSettings(pydantic.BaseModel):
     decisionStrategy: str = "AFFIRMATIVE"
 
 
-class KeyCloakClient(ImportModel):
-    id: str = ""
+class ClientBase(ImportModel):
     clientId: str
+
+
+class KeyCloakClient(ClientBase):
+    id: str = ""
     name: str = ""
     description: str = ""
     rootUrl: str = ""
@@ -93,7 +98,7 @@ class KeyCloakClient(ImportModel):
     authorizationSettings: ClinetAuthorizationSettings = ClinetAuthorizationSettings()
 
 
-class ResourceScope(ImportModel):
+class ResourceScope(ClientBase):
     displayName: str = ""
     iconUri: str = ""
     id: str = ""
@@ -103,33 +108,30 @@ class Scope(ResourceScope):
     name: str
 
 
-class Resource(ImportModel):
+class Resource(ClientBase):
     name: str
     type: str = ""
     icon_uri: str = ""
     ownerManagedAccess: bool = False
-    scopes: list[ResourceScope] = []
+    scopes: list[str] = []
     _id: str = ""
 
 
-class GroupBasePolicy(ImportModel):
-    class UserGroup(PolicyGroup):
-        extenChildren: bool = False
-
+class GroupBasePolicy(ClientBase):
     name: str
     id: str = ""
     description: str = ""
     groupsClaim: str = ""
     logic: str = "POSITIVE"
-    scopes: list[UserGroup] = []
+    groups: list[str] = []
 
 
-class ScopeBasePermission(ImportModel):
+class ScopeBasePermission(ClientBase):
     name: str
     id: str = ""
     description: str = ""
     resourceType: str = ""
     decisionStrategy: str = "AFFIRMATIVE"
-    resources: Resource
-    policies: list[GroupBasePolicy]
-    scopes: Scope
+    resources: str
+    policies: list[str]
+    scopes: list[str]

@@ -7,6 +7,7 @@ from loguru import logger
 
 import excel_schema
 import stores.conn_config
+import services.keycloak_converter
 
 RESOURCE_IN_EXCEL = [
     excel_schema.ResourceType.USERGROUP,
@@ -48,8 +49,6 @@ def main():
     except IOError:
         logger.error("Config Read Failed.")
 
-
-if __name__ == "__main__":
     stores.conn_config.ConnectionConfig(
         host="127.0.0.1", port="8080", username="admin", password="admin"
     )
@@ -57,3 +56,7 @@ if __name__ == "__main__":
     mykeycloak = stores.conn_config.ConnectionConfig.get_instance()
     token = mykeycloak.get_token()
     logger.info(token)
+
+
+if __name__ == "__main__":
+    resource = services.keycloak_converter.create_keycloak_resource()
