@@ -4,7 +4,7 @@ import pydantic
 
 
 class ResourceType(enum.Enum):
-    GROUP = "group"
+    USERGROUP = "user_group"
     USER = "user"
     CLIENT = "client"
     RESOURCE = "resource"
@@ -12,7 +12,7 @@ class ResourceType(enum.Enum):
     PERMISSION = "permission"
 
 
-class Group(pydantic.BaseModel):
+class UserGroup(pydantic.BaseModel):
     groupName: str
     groupPath: str
 

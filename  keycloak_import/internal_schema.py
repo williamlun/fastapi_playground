@@ -1,5 +1,12 @@
+from abc import update_abstractmethods
 import pydantic
 import uuid
+import enum
+
+
+class ResourceType(enum.Enum):
+    REALMS = "realms"
+    USERGROUP = "user_group"
 
 
 def to_camel(string: str) -> str:
@@ -10,48 +17,55 @@ def to_camel(string: str) -> str:
 
 
 class ImportModel(pydantic.BaseModel):
-    pass
-    # class Config:
-    #     alias_generator = to_camel
-    #     allow_population_by_field_name = True
+    class Config:
+        alias_generator = to_camel
+        allow_population_by_field_name = True
+
+
+class UserAction(str):
+    UPDATE_PASSWORD = "UPDATE_PASSWORD"
+    TERMS_AND_CONDITIONS = "terms_and_conditions"
+    UPDATE_PROFILE = "UPDATE_PROFILE"
+    VERIFY_EMAIL = "VERIFY_EMAIL"
+
+
+class Realm(ImportModel):
+    enabled: bool = True
+    name: str
 
 
 class User(ImportModel):
     class Credentials(pydantic.BaseModel):
         type: str = "password"
-        value: str
+        value: str = "password"
 
+    id: str = ""
     username: str
     email: str = ""
-    emailVerified: bool = True
+    email_verified: bool = True
     enabled: bool = True
-    firstName: str = ""
-    lastName: str = ""
+    first_name: str = ""
+    last_name: str = ""
     credentials: list[Credentials]
     groups: list[str]
+    required_actions: list[UserAction] = [UserAction.UPDATE_PASSWORD]
 
 
-class Group(ImportModel):
+class PolicyGroup(ImportModel):
+    id: str = ""
+
+
+class Group(PolicyGroup):
+    path: str = ""
     name: str
-    subGroups: list["Group"]
-
-
-class Realm(ImportModel):
-    realm: str
-    enabled: bool = True
-    users: list[User]
-    groups: list[Group]
 
 
 class ClinetAuthorizationSettings(pydantic.BaseModel):
     decisionStrategy: str = "AFFIRMATIVE"
 
 
-class BaseClient(pydantic.BaseModel):
-    client_uuid: str = ""
-
-
-class KeyCloakClient(BaseClient):
+class KeyCloakClient(ImportModel):
+    id: str = ""
     clientId: str
     name: str = ""
     description: str = ""
@@ -79,28 +93,27 @@ class KeyCloakClient(BaseClient):
     authorizationSettings: ClinetAuthorizationSettings = ClinetAuthorizationSettings()
 
 
-class BaseScope(BaseClient):
+class ResourceScope(ImportModel):
     displayName: str = ""
     iconUri: str = ""
     id: str = ""
 
 
-class Scope(BaseScope):
+class Scope(ResourceScope):
     name: str
 
 
-class Resource(BaseClient):
+class Resource(ImportModel):
     name: str
     type: str = ""
     icon_uri: str = ""
     ownerManagedAccess: bool = False
-    scopes: list[BaseScope] = []
+    scopes: list[ResourceScope] = []
     _id: str = ""
 
 
-class GroupBasePolicy(BaseClient):
-    class UserGroup(pydantic.BaseModel):
-        id: uuid.UUID
+class GroupBasePolicy(ImportModel):
+    class UserGroup(PolicyGroup):
         extenChildren: bool = False
 
     name: str
@@ -111,19 +124,12 @@ class GroupBasePolicy(BaseClient):
     scopes: list[UserGroup] = []
 
 
-class ScopeBasePermission(BaseClient):
+class ScopeBasePermission(ImportModel):
     name: str
     id: str = ""
     description: str = ""
     resourceType: str = ""
     decisionStrategy: str = "AFFIRMATIVE"
-    resources: list[uuid.UUID]
-    policies: list[uuid.UUID]
-    scopes: list[uuid.UUID]
-
-
-class GetGroupResponse(pydantic.BaseModel):
-    id: str
-    name: str
-    path: str
-    subGroups: list["GetGroupResponse"]
+    resources: Resource
+    policies: list[GroupBasePolicy]
+    scopes: Scope

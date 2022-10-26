@@ -6,9 +6,10 @@ import yaml
 from loguru import logger
 
 import excel_schema
+import stores.conn_config
 
 RESOURCE_IN_EXCEL = [
-    excel_schema.ResourceType.GROUP,
+    excel_schema.ResourceType.USERGROUP,
     excel_schema.ResourceType.USER,
     excel_schema.ResourceType.CLIENT,
     excel_schema.ResourceType.RESOURCE,
@@ -18,14 +19,14 @@ RESOURCE_IN_EXCEL = [
 
 
 def read_excel(filepath: str) -> dict[excel_schema.ResourceType, pd.DataFrame]:
-    excel = {}
+    excel_df = {}
     for resource_type in RESOURCE_IN_EXCEL:
         dataframe = pd.read_excel(
             filepath,
             sheet_name=resource_type.value,
         )
-        excel[resource_type] = dataframe.fillna("")
-    return excel
+        excel_df[resource_type] = dataframe.fillna("")
+    return excel_df
 
 
 def get_realm_name(filepath: str) -> str:
@@ -44,10 +45,15 @@ def main():
             config_file = yaml.load(yamlfile, Loader=yaml.FullLoader)
             config = excel_schema.Config(**config_file)
             logger.info("config read successfully.")
-
     except IOError:
         logger.error("Config Read Failed.")
 
 
 if __name__ == "__main__":
-    main()
+    stores.conn_config.ConnectionConfig(
+        host="127.0.0.1", port="8080", username="admin", password="admin"
+    )
+
+    mykeycloak = stores.conn_config.ConnectionConfig.get_instance()
+    token = mykeycloak.get_token()
+    logger.info(token)
