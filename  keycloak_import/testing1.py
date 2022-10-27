@@ -8,7 +8,6 @@ class Type(str):
         pass
 
     name: str
-    pass
 
 
 class LORA(Type):

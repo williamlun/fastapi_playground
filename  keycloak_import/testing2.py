@@ -4,12 +4,12 @@ from typing import Generic, TypeVar
 
 
 class Resource(pydantic.BaseModel):
-    class KeycloakResourceType(str):
+    class KeycloakResourceType:
         LORA = "LORA"
         ALARM = "Alarm"
         BACNET = "BACNET"
 
-    class Scope(str):
+    class Scope:
         pass
 
     class LoraScope(Scope):
