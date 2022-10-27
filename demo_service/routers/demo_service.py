@@ -18,16 +18,17 @@ from loguru import logger
 import requests
 from keycloak import KeycloakOpenID, KeycloakAdmin
 
+
 router = fastapi.APIRouter()
 
 # oauth2_scheme = OAuth2PasswordBearer()
 
 kc_scheme = HTTPBearer()
 BASE_URL = "http://127.0.0.1:8077"
-_url = "http://127.0.0.1:8080"
+_url = "http://127.0.0.1:9090"
 _realms = "atal"
 _client_id = "demo_service"
-_client_secret = "91djjv6bCPQhDa8WndrnyQdIsB0pF3Cd"
+_client_secret = "11DZhQr51uTUf2jSPO0aIV4Z9Tt5J6NZ"
 
 keycloak_openid = KeycloakOpenID(
     server_url=_url,
@@ -93,7 +94,7 @@ async def hello_world():
     return "hello world"
 
 
-@router.get("/redir_for_access_code")
+@router.get("/redirect")
 async def redirect_uri(
     response: Response,
     state: str,
@@ -108,13 +109,13 @@ async def hello_world_with_auth(token=Depends(get_token)):
     return "hello world with auth"
 
 
-@router.post("/manual_login", tags=["login"])
-async def manual_login(form_data: OAuth2PasswordRequestForm = Depends()):
-    token = manual_login(form_data.username, form_data.password)
-    return token
+# @router.post("/manual_login", tags=["login"])
+# async def manual_login(form_data: OAuth2PasswordRequestForm = Depends()):
+#     token = manual_login(form_data.username, form_data.password)
+#     return token
 
 
-@router.post("/lib_login", tags=["login"])
+@router.post("/login", tags=["login"])
 async def lib_login(form_data: OAuth2PasswordRequestForm = Depends()):
     token = keycloak_openid.token(form_data.username, form_data.password)
     return token
@@ -131,7 +132,7 @@ async def lib_login(form_data: OAuth2PasswordRequestForm = Depends()):
 @router.get("/authorize", tags=["login"])
 async def get_access_code(
     state: str = "123",
-    redir_url: str = "http://127.0.0.1:8077/redir_for_access_code",
+    redir_url: str = "http://127.0.0.1:8077/redirect",
 ):
     url = keycloak_openid.auth_url(redir_url, state=state)
     logger.info(f"{url}")
@@ -144,7 +145,7 @@ async def get_access_code_redirect(
     response: Response,
     client_id: str = None,
     client_secret: str = None,
-    redirect_uri: str = "http://127.0.0.1:8077/redir_for_access_code",
+    redirect_uri: str = "http://127.0.0.1:8077/redirect",
     code: str = None,
 ):
     if code:
@@ -161,7 +162,7 @@ async def get_access_code_redirect(
     return {"message": "login successful, token stored in cookie", "token": token}
 
 
-@router.get("/oauth/logout/1", tags=["logout"])
+@router.get("/oauth/logout", tags=["logout"])
 async def logout(response: Response, token: Optional[str] = Cookie(None)):
     if not token:
         return "token not found."
@@ -173,6 +174,7 @@ async def logout(response: Response, token: Optional[str] = Cookie(None)):
     return "logout successfully"
 
 
+@router.get("/site_a/device_a/")
 @router.get("/get_user_permissions", tags=["auth"])
 async def get_user_permissions(token=Depends(get_token)):
     # keycloak_openid.load_authorization_config(
@@ -190,7 +192,7 @@ async def get_user_permissions(token=Depends(get_token)):
     # )
     try:
         permissions = keycloak_openid.uma_permissions(
-            token, permissions="resource_a#read"
+            token, permissions="resouce_a#view"
         )
         logger.info(f"permissions : {permissions}")
     except keycloak.exceptions.KeycloakError:
