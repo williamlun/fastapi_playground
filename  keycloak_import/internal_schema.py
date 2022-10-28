@@ -1,5 +1,6 @@
+"""Internal schema for keycloak"""
+
 import pydantic
-import uuid
 import enum
 
 
@@ -27,19 +28,20 @@ class ImportModel(pydantic.BaseModel):
         allow_population_by_field_name = True
 
 
-class UserAction(str):
-    UPDATE_PASSWORD = "UPDATE_PASSWORD"
-    TERMS_AND_CONDITIONS = "terms_and_conditions"
-    UPDATE_PROFILE = "UPDATE_PROFILE"
-    VERIFY_EMAIL = "VERIFY_EMAIL"
-
-
 class Realm(ImportModel):
     enabled: bool = True
     name: str
 
 
 class User(ImportModel):
+    """User model"""
+
+    class UserAction(str):
+        UPDATE_PASSWORD = "UPDATE_PASSWORD"
+        TERMS_AND_CONDITIONS = "terms_and_conditions"
+        UPDATE_PROFILE = "UPDATE_PROFILE"
+        VERIFY_EMAIL = "VERIFY_EMAIL"
+
     class Credentials(pydantic.BaseModel):
         type: str = "password"
         value: str = "password"
@@ -62,66 +64,98 @@ class Group(ImportModel):
     path: str = ""
 
 
-class ClinetAuthorizationSettings(pydantic.BaseModel):
-    decisionStrategy: str = "AFFIRMATIVE"
-
-
 class ClientBase(ImportModel):
-    clientId: str
+    client_id: str
 
 
 class KeyCloakClient(ClientBase):
+    """keyclock client model"""
+
+    class ClinetAuthorizationSettings(pydantic.BaseModel):
+        decision_strategy: str = "AFFIRMATIVE"
+
     id: str = ""
     name: str = ""
     description: str = ""
-    rootUrl: str = ""
-    adminUrl: str = ""
-    baseUrl: str = ""
-    surrogateAuthRequired: bool = False
+    root_url: str = ""
+    admin_url: str = ""
+    base_url: str = ""
+    surrogate_auth_required: bool = False
     enabled: bool = True
-    alwaysDisplayInConsole: bool = False
-    clientAuthenticatorType: str = "client-secret"
-    redirectUris: list[str] = []
-    webOrigins: list[str] = []
-    notBefore: int = 0
-    bearerOnly: bool = False
-    consentRequired: bool = False
-    standardFlowEnabled: bool = True
-    implicitFlowEnabled: bool = False
-    directAccessGrantsEnabled: bool = True
-    serviceAccountsEnabled: bool = True
-    authorizationServicesEnabled: bool = True
-    publicClient: bool = False
-    frontchannelLogout: bool = True
+    always_display_in_console: bool = False
+    client_authenticator_type: str = "client-secret"
+    redirect_uris: list[str] = []
+    web_origins: list[str] = []
+    not_before: int = 0
+    bearer_only: bool = False
+    consent_required: bool = False
+    standard_flow_enabled: bool = True
+    implicit_flow_enabled: bool = False
+    direct_access_frants_enabled: bool = True
+    service_accounts_enabled: bool = True
+    authorization_services_enabled: bool = True
+    public_client: bool = False
+    frontchannel_logout: bool = True
     protocol: str = "openid-connect"
     attributes: dict = {"client_credentials.use_refresh_token": "true"}
-    authorizationSettings: ClinetAuthorizationSettings = ClinetAuthorizationSettings()
+    authorization_settings: ClinetAuthorizationSettings = ClinetAuthorizationSettings()
 
 
-class ResourceScope(ClientBase):
-    displayName: str = ""
-    iconUri: str = ""
-    id: str = ""
+class KeyCloakResourceType(str):
+    LORA = "LoRa Sensor"
+    ALARM = "Alarm"
+    BACNET = "BACnet"
 
 
-class Scope(ResourceScope):
+class KeyCloakResourceBase(ClientBase):
+    """resource base model"""
+
+    class Scope(str):
+        pass
+
     name: str
-
-
-class Resource(ClientBase):
-    name: str
-    type: str = ""
     icon_uri: str = ""
-    ownerManagedAccess: bool = False
-    scopes: list[str] = []
+    owner_managed_access: bool = False
     _id: str = ""
+
+
+class LoraResource(KeyCloakResourceBase):
+    """Lora type resource"""
+
+    class Scope(str):
+        DATA_HISTORICAL = "data:historical"
+        DATA_REALTIME = "data:realtime"
+
+    scopes: list[Scope] = [Scope.DATA_HISTORICAL, Scope.DATA_REALTIME]
+    type: str = KeyCloakResourceType.LORA
+
+
+class AlarmResource(KeyCloakResourceBase):
+    """Alarm type resource"""
+
+    class Scope(str):
+        ALARM_READ = "alarm:read"
+        ALARM_ACK = "alarm:ack"
+
+    scopes: list[Scope] = [Scope.ALARM_READ, Scope.ALARM_ACK]
+    type: str = KeyCloakResourceType.ALARM
+
+
+class BacnetResource(KeyCloakResourceBase):
+    """Bacnet type resource"""
+
+    class Scope(str):
+        BACNET_READ = "bacnet:read"
+
+    scopes: list[Scope] = [Scope.BACNET_READ]
+    type: str = KeyCloakResourceType.BACNET
 
 
 class GroupBasePolicy(ClientBase):
     name: str
     id: str = ""
     description: str = ""
-    groupsClaim: str = ""
+    groups_claim: str = ""
     logic: str = "POSITIVE"
     groups: list[str] = []
 
@@ -130,8 +164,8 @@ class ScopeBasePermission(ClientBase):
     name: str
     id: str = ""
     description: str = ""
-    resourceType: str = ""
-    decisionStrategy: str = "AFFIRMATIVE"
+    resource_type: str = ""
+    decision_strategy: str = "AFFIRMATIVE"
     resources: str
     policies: list[str]
     scopes: list[str]
