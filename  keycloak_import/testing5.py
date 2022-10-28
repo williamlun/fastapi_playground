@@ -1,0 +1,20 @@
+import requests
+import json
+
+_svc_url = "http://127.0.0.1:8080/admin/realms/atal/groups"
+token = "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJpTEd3TDZwb3hmakpnY016Mm0zS2ZjbjB6a3Q5TVRKQU13REU4MnV5WHhFIn0.eyJleHAiOjE2NjY5NDk3MDYsImlhdCI6MTY2Njk0OTY0NiwianRpIjoiZTgwOGM0MzYtYzFkMS00MGYzLWJiODEtYmUyMjAyM2Q2NmI3IiwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDgwL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI0Y2UyZmUyYS05NThlLTQ3ZTAtOGMzYS0wNDgzMDU3MThhNzMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiMDhlNGRmYjAtNTNhMi00YzUzLTg0MjUtN2ZkM2NiYjBlMDNmIiwiYWNyIjoiMSIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsInNpZCI6IjA4ZTRkZmIwLTUzYTItNGM1My04NDI1LTdmZDNjYmIwZTAzZiIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6IndpbGxpYW1sZXVuZ0BhdGFsLmNvbSJ9.LXW2J_ZvsjHtTuCYGs2rcxdCDKpnHNUw8FoMTbZ30CFLCnzQxvKFhYSBGW-uIoLbtTfLEYcW_BEqD8eWuB842QJoTYVKwoGY_LJmn0Piv4xo9cHMEmIst_hdcQdvyeMJX0nOeEdDN4Wa2D_73_35VQ8RmjgsDWNp2SrkXDW-XWec0thQNIJUZmOOL_DS1Abn3lfQRHc1rMHIXERHsvVRe4t5dNMfCxIGsRP6104miq8JyiCohFOx8W_EIp67eQQgsTlHxE7yJUzH5JV2lRNBOE5PLCoQb35U6JAoziVKTlj219WIPWlh3V_5r84Q7E_fAjGVUjaqGUyVXSBy2UX62A"
+_req_header = {
+    "Authorization": f"Bearer {token}",
+    "Content-Type": "application/json",
+}
+
+item = {"name": "dfdfgaad"}
+condi = {}
+
+# response = requests.post(url, headers=header, data=json.dumps(item))
+
+
+response = requests.get(_svc_url, headers=_req_header, params=condi)
+
+asdf = response.json()
+print("123")

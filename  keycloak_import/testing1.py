@@ -1,6 +1,7 @@
 import pydantic
 import enum
 from typing import Generic, TypeVar
+from pydantic.generics import GenericModel
 
 
 class Type(str):
@@ -29,10 +30,10 @@ class ALARM(Type):
 T = TypeVar("T", bound=Type)
 
 
-class Resource(Generic[T], pydantic.BaseModel):
+class Resource(Generic[T],GenericModel):
 
     name: str
-    type: T.name
+    type: T.
     icon_uri: str = ""
     owner_managed_access: bool = False
     scopes: set[T.Scope] = set()
