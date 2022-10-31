@@ -1,0 +1,127 @@
+illuminance:
+  - SIMPLE_HIGH
+  - SIMPLE_LOW
+relativeHumidity:
+  - SIMPLE_HIGH
+  - SIMPLE_LOW
+temperature:
+  - SIMPLE_HIGH
+  - SIMPLE_LOW
+# batteryLevel:
+
+# isLowBattery:
+
+# isOccupied:
+
+# softwareVersion:
+
+# hardwareVersion:
+
+# timestamp:
+
+# isDisassembled:
+
+# hasAlarm:
+
+# co2:
+
+# isActive:
+
+# fillPercentage:
+
+# angleOfInclination:
+
+# currentma1:
+
+# currentma2:
+
+# currentma3:
+
+# multiplier1:
+
+# multiplier2:
+
+# multiplier3:
+
+# current:
+
+# fineCurrent:
+
+# adcRawValue:
+
+# isWaterLeak1:
+
+# isWaterLeak2:
+
+# isWaterLeak:
+
+# co:
+
+# tvoc:
+
+# pm10:
+
+# pm2_5:
+
+# pm1_0:
+
+# hcho:
+
+# o3:
+
+# no2:
+
+# nh3:
+
+# h2s:
+
+# so2:
+
+# ch4:
+
+# noiseLevel:
+
+# hasMotion:
+
+# relay1:
+
+# relay2:
+
+# relay3:
+
+# input1:
+
+# input2:
+
+# input3:
+
+# distance:
+
+# isTriggered:
+
+# forwardFlow:
+
+# reverseFlow:
+
+# instantaneousFlow:
+
+# flowmeterNumber:
+
+# pressure:
+
+# meterStatus:
+
+# counterA:
+
+# counterB:
+
+# deviceStatus:
+
+# sensorStatus:
+
+# totalCounterA:
+
+# totalCounterB:
+
+# rssi:
+# loRaSNR:

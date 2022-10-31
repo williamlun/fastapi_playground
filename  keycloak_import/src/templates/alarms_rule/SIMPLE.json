@@ -1,0 +1,61 @@
+{
+    "id": "$alarm_id",
+    "alarmType": "$alarm_type",
+    "createRules": {
+        "CRITICAL": {
+            "condition": {
+                "condition": [
+                    {
+                        "key": {
+                            "type": "TIME_SERIES",
+                            "key": "$key"
+                        },
+                        "valueType": "NUMERIC",
+                        "value": null,
+                        "predicate": {
+                            "type": "NUMERIC",
+                            "operation": "$operator",
+                            "value": {
+                                "defaultValue": 0,
+                                "userValue": null,
+                                "dynamicValue": {
+                                    "sourceType": "CURRENT_DEVICE",
+                                    "sourceAttribute": "$alarm_type_threshold",
+                                    "inherit": false
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "key": {
+                            "type": "ATTRIBUTE",
+                            "key": "$alarm_type_enabled"
+                        },
+                        "valueType": "BOOLEAN",
+                        "value": null,
+                        "predicate": {
+                            "type": "BOOLEAN",
+                            "operation": "EQUAL",
+                            "value": {
+                                "defaultValue": true,
+                                "userValue": null,
+                                "dynamicValue": null
+                            }
+                        }
+                    }
+                ],
+                "spec": {
+                    "type": "SIMPLE"
+                }
+            },
+            "schedule": null,
+            "alarmDetails": null,
+            "dashboardId": null
+        }
+    },
+    "clearRule": null,
+    "propagate": false,
+    "propagateToOwner": false,
+    "propagateToTenant": false,
+    "propagateRelationTypes": null
+}

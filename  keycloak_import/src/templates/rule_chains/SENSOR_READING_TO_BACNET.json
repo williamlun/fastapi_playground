@@ -1,0 +1,1469 @@
+{
+    "ruleChainId": {
+        "entityType": "RULE_CHAIN",
+        "id": "$rule_chain_id"
+    },
+    "firstNodeIndex": 59,
+    "nodes": [
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 357,
+                "layoutY": 1104
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.forwardFlow;\r\nnewMsg.params = msg.forwardFlow;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 359,
+                "layoutY": 1142
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.reverseFlow;\r\nnewMsg.params = msg.reverseFlow;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 361,
+                "layoutY": 1180
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.instantaneousFlow;\r\nnewMsg.params = msg.instantaneousFlow;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 361,
+                "layoutY": 1218
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.flowmeterNumber;\r\nnewMsg.params = msg.flowmeterNumber;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 363,
+                "layoutY": 1257
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.pressure;\r\nnewMsg.params = msg.pressure;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 363,
+                "layoutY": 1295
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.meterStatus;\r\nnewMsg.params = msg.meterStatus;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 362,
+                "layoutY": 1333
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.counterA;\r\nnewMsg.params = msg.counterA;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 363,
+                "layoutY": 1370
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.counterB;\r\nnewMsg.params = msg.counterB;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 362,
+                "layoutY": 1409
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.deviceStatus;\r\nnewMsg.params = msg.deviceStatus;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 361,
+                "layoutY": 1446
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.sensorStatus;\r\nnewMsg.params = msg.sensorStatus;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 969,
+                "layoutY": 1255
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.totalCounterA;\nnewMsg.params = msg.totalCounterA;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 968,
+                "layoutY": 1294
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.totalCounterB;\nnewMsg.params = msg.totalCounterB;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 958,
+                "layoutY": 583
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.isOccupied1;\nnewMsg.params = msg.isOccupied1;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 957,
+                "layoutY": 549
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.isOccupied2;\nnewMsg.params = msg.isOccupied2;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 958,
+                "layoutY": 516
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.isOccupied3;\nnewMsg.params = msg.isOccupied3;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 956,
+                "layoutY": 484
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.isOccupied4;\nnewMsg.params = msg.isOccupied4;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 957,
+                "layoutY": 451
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.temperature1;\nnewMsg.params = msg.temperature1;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 956,
+                "layoutY": 415
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.temperature2;\nnewMsg.params = msg.temperature2;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 959,
+                "layoutY": 382
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.temperature3;\nnewMsg.params = msg.temperature3;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 963,
+                "layoutY": 347
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.temperature4;\nnewMsg.params = msg.temperature4;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 963,
+                "layoutY": 315
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.isActive1;\nnewMsg.params = msg.isActive1;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 964,
+                "layoutY": 281
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.isActive2;\nnewMsg.params = msg.isActive2;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 961,
+                "layoutY": 247
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.isActive3;\nnewMsg.params = msg.isActive3;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 960,
+                "layoutY": 210
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.isActive4;\nnewMsg.params = msg.isActive4;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 971,
+                "layoutY": 766
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.rssi;\nnewMsg.params = msg.rssi;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 970,
+                "layoutY": 804
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.loRaSNR;\nnewMsg.params = msg.loRaSNR;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 969,
+                "layoutY": 842
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.DI_1;\nnewMsg.params = msg.DI_1;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 970,
+                "layoutY": 877
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.DI_2;\nnewMsg.params = msg.DI_2;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 969,
+                "layoutY": 914
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.DI_3;\nnewMsg.params = msg.DI_3;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 967,
+                "layoutY": 952
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.DI_4;\nnewMsg.params = msg.DI_4;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 964,
+                "layoutY": 991
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.DO_1;\nnewMsg.params = msg.DO_1;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 966,
+                "layoutY": 1027
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.DO_2;\nnewMsg.params = msg.DO_2;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 969,
+                "layoutY": 1064
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.isOccupied;\nnewMsg.params = msg.isOccupied;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 968,
+                "layoutY": 1101
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.batteryPercentage;\nnewMsg.params = msg.batteryPercentage;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 970,
+                "layoutY": 1139
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.ch4;\nnewMsg.params = msg.ch4;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 969,
+                "layoutY": 1178
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.h2s;\nnewMsg.params = msg.h2s;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 970,
+                "layoutY": 1216
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.so2;\nnewMsg.params = msg.so2;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 357,
+                "layoutY": 1065
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.isLowBattery;\r\nnewMsg.params = msg.isLowBattery;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 357,
+                "layoutY": 631
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.tvoc;\r\nnewMsg.params = msg.tvoc;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 352,
+                "layoutY": 669
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.pm10;\r\nnewMsg.params = msg.pm10;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 354,
+                "layoutY": 708
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.pm2_5;\r\nnewMsg.params = msg.pm2_5;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 357,
+                "layoutY": 748
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.pm1_0;\r\nnewMsg.params = msg.pm1_0;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 360,
+                "layoutY": 787
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.hcho;\r\nnewMsg.params = msg.hcho;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 361,
+                "layoutY": 827
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.no2;\r\nnewMsg.params = msg.no2;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 360,
+                "layoutY": 866
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.o3;\r\nnewMsg.params = msg.o3;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 360,
+                "layoutY": 909
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.nh3;\r\nnewMsg.params = msg.nh3;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 358,
+                "layoutY": 948
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.noiseLevel;\r\nnewMsg.params = msg.noiseLevel;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 358,
+                "layoutY": 987
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.hasMotion;\r\nnewMsg.params = msg.hasMotion;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 357,
+                "layoutY": 1027
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.isActive;\r\nnewMsg.params = msg.isActive;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 358,
+                "layoutY": 591
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": false,
+            "configuration": {
+                "jsScript": "var newMsg = {};\r\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\r\n\r\nnewMsg.method = \"setValue\" + ruleChainAttribute.co;\r\nnewMsg.params = msg.co;\r\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\r\n\r\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 361,
+                "layoutY": 260
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": true,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.hasAlarm;\nnewMsg.params = msg.hasAlarm;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 359,
+                "layoutY": 512
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": true,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.isWaterLeak1;\nnewMsg.params = msg.isWaterLeak1;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 358,
+                "layoutY": 552
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": true,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.isWaterLeak2;\nnewMsg.params = msg.isWaterLeak2;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 362,
+                "layoutY": 472
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": true,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.illuminance;\nnewMsg.params = msg.illuminance;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 53,
+                "layoutY": 293
+            },
+            "type": "org.thingsboard.rule.engine.metadata.TbGetAttributesNode",
+            "name": "Get Rule Attribute",
+            "debugMode": true,
+            "configuration": {
+                "tellFailureIfAbsent": true,
+                "clientAttributeNames": [],
+                "sharedAttributeNames": [],
+                "serverAttributeNames": [
+                    "ruleChainAttribute"
+                ],
+                "latestTsKeyNames": [],
+                "getLatestValueWithTs": false
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 36,
+                "layoutY": 772
+            },
+            "type": "org.thingsboard.rule.engine.filter.TbJsSwitchNode",
+            "name": "Rule Attribute Checker",
+            "debugMode": true,
+            "configuration": {
+                "jsScript": "var checklist = Object.keys(msg);\nreturn checklist;"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 358,
+                "layoutY": 345
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": true,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.co2;\nnewMsg.params = msg.co2;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 357,
+                "layoutY": 388
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": true,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.temperature;\nnewMsg.params = msg.temperature;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 359,
+                "layoutY": 431
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": true,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.relativeHumidity;\nnewMsg.params = msg.relativeHumidity;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 299,
+                "layoutY": 151
+            },
+            "type": "org.thingsboard.rule.engine.filter.TbJsSwitchNode",
+            "name": "Switch",
+            "debugMode": true,
+            "configuration": {
+                "jsScript": "if (msgType === 'POST_TELEMETRY_REQUEST') {\n    return ['POST_TELEMETRY_REQUEST', 'Others'];\n} else {\n    return ['Others'];\n}"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 767,
+                "layoutY": 714
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbChangeOriginatorNode",
+            "name": "Change Originator",
+            "debugMode": true,
+            "configuration": {
+                "originatorSource": "RELATED",
+                "relationsQuery": {
+                    "fetchLastLevelOnly": false,
+                    "direction": "FROM",
+                    "maxLevel": 1,
+                    "filters": [
+                        {
+                            "relationType": "Contains",
+                            "entityTypes": [
+                                "DEVICE"
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 1112,
+                "layoutY": 674
+            },
+            "type": "org.thingsboard.rule.engine.action.TbLogNode",
+            "name": "Fail Log",
+            "debugMode": true,
+            "configuration": {
+                "jsScript": "return 'Incoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 659,
+                "layoutY": 151
+            },
+            "type": "org.thingsboard.rule.engine.flow.TbRuleChainInputNode",
+            "name": "Back Root Rule Chain",
+            "debugMode": false,
+            "configuration": {
+                "ruleChainId": "$root_rule_chain_id"
+            }
+        },
+        {
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 359,
+                "layoutY": 303
+            },
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "New RPC Message",
+            "debugMode": true,
+            "configuration": {
+                "jsScript": "var newMsg = {};\nvar ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute);\n\nnewMsg.method = \"setValue\" + ruleChainAttribute.batteryLevel;\nnewMsg.params = msg.batteryLevel;\nmsgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+            }
+        }
+    ],
+    "connections": [
+        {
+            "fromIndex": 0,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 1,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 2,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 3,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 4,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 5,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 6,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 7,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 8,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 9,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 10,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 11,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 12,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 13,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 14,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 15,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 16,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 17,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 18,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 19,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 20,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 21,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 22,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 23,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 24,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 25,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 26,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 27,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 28,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 29,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 30,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 31,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 32,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 33,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 34,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 35,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 36,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 37,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 38,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 39,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 40,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 41,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 42,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 43,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 44,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 45,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 46,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 47,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 48,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 49,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 50,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 51,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 52,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 53,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 54,
+            "toIndex": 55,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 63,
+            "type": "batteryLevel"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 56,
+            "type": "co2"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 57,
+            "type": "temperature"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 58,
+            "type": "relativeHumidity"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 53,
+            "type": "illuminance"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 50,
+            "type": "hasAlarm"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 51,
+            "type": "isWaterLeak1"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 52,
+            "type": "isWaterLeak2"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 49,
+            "type": "co"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 38,
+            "type": "tvoc"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 39,
+            "type": "pm10"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 40,
+            "type": "pm2_5"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 41,
+            "type": "pm1_0"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 42,
+            "type": "hcho"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 43,
+            "type": "no2"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 44,
+            "type": "o3"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 45,
+            "type": "nh3"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 46,
+            "type": "noiseLevel"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 47,
+            "type": "hasMotion"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 48,
+            "type": "isActive"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 37,
+            "type": "isLowBattery"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 24,
+            "type": "rssi"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 25,
+            "type": "loRaSNR"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 26,
+            "type": "DI_1"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 27,
+            "type": "DI_2"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 28,
+            "type": "DI_3"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 29,
+            "type": "DI_4"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 30,
+            "type": "DO_1"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 31,
+            "type": "DO_2"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 32,
+            "type": "isOccupied"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 33,
+            "type": "batteryPercentage"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 34,
+            "type": "ch4"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 35,
+            "type": "h2s"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 36,
+            "type": "so2"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 0,
+            "type": "forwardFlow"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 1,
+            "type": "reverseFlow"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 2,
+            "type": "instantaneousFlow"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 3,
+            "type": "flowmeterNumber"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 4,
+            "type": "pressure"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 5,
+            "type": "meterStatus"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 6,
+            "type": "counterA"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 7,
+            "type": "counterB"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 8,
+            "type": "deviceStatus"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 9,
+            "type": "sensorStatus"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 10,
+            "type": "totalCounterA"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 11,
+            "type": "totalCounterB"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 12,
+            "type": "isOccupied1"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 13,
+            "type": "isOccupied2"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 14,
+            "type": "isOccupied3"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 15,
+            "type": "isOccupied4"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 16,
+            "type": "temperature1"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 17,
+            "type": "temperature2"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 18,
+            "type": "temperature3"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 19,
+            "type": "temperature4"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 20,
+            "type": "isActive1"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 21,
+            "type": "isActive2"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 22,
+            "type": "isActive3"
+        },
+        {
+            "fromIndex": 55,
+            "toIndex": 23,
+            "type": "isActive4"
+        },
+        {
+            "fromIndex": 56,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 57,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 58,
+            "toIndex": 60,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 59,
+            "toIndex": 62,
+            "type": "Others"
+        },
+        {
+            "fromIndex": 59,
+            "toIndex": 54,
+            "type": "POST_TELEMETRY_REQUEST"
+        },
+        {
+            "fromIndex": 60,
+            "toIndex": 62,
+            "type": "Success"
+        },
+        {
+            "fromIndex": 60,
+            "toIndex": 61,
+            "type": "Failure"
+        },
+        {
+            "fromIndex": 63,
+            "toIndex": 60,
+            "type": "Success"
+        }
+    ],
+    "ruleChainConnections": null
+}

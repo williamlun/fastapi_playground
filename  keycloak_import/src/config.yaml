@@ -1,0 +1,29 @@
+thingsboard:
+  host: 172.16.14.228
+  port: 30909
+  mqtt_port: 31884
+  username: tenant@thingsboard.org
+  password: tenant
+  kafka:
+    url: kafkaUrl
+    security_protocol: kafka protocol
+    sasl_mechanism: kafka sasl
+    username: kafka username
+    password: fafka password
+
+chirpstack:
+  host: 172.16.14.228
+  port: 31808
+  username: admin
+  password: admin
+  mqtt_port: 31883
+  mqtt_username: admin
+  mqtt_password: admin
+
+neo4j:
+  host: neo4j://localhost
+  port: 7687
+  username: neo4j
+  password: 123
+
+excel_name: ATALDEV-merged_excel2.xlsx

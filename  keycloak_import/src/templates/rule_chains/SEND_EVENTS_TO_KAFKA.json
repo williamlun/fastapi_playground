@@ -1,0 +1,185 @@
+{
+  "ruleChainId": {
+    "entityType": "RULE_CHAIN",
+    "id": "$rule_chain_id"
+  },
+  "firstNodeIndex": 6,
+  "nodes": [
+    {
+      "createdTime": 0,
+      "additionalInfo": {
+        "description": "",
+        "layoutX": 550,
+        "layoutY": 325
+      },
+      "type": "org.thingsboard.rule.engine.filter.TbJsSwitchNode",
+      "name": "Kafka Topic Switch",
+      "debugMode": false,
+      "configuration": {
+        "jsScript": "if (msgType === 'POST_TELEMETRY_REQUEST') {\n    return ['POST_TELEMETRY_REQUEST', 'ANY'];\n} else if (msgType === 'ALARM') {\n    return ['ALARM', 'ANY']\n} else {\n    return ['ANY']\n}"
+      }
+    },
+    {
+      "createdTime": 0,
+      "additionalInfo": {
+        "description": "",
+        "layoutX": 1054,
+        "layoutY": 325
+      },
+      "type": "org.thingsboard.rule.engine.kafka.TbKafkaNode",
+      "name": "thingsboard-post-telemetry-request",
+      "debugMode": false,
+      "configuration": {
+        "topicPattern": "thingsboard-post-telemetry-request",
+        "bootstrapServers": "$kafka_cluster_url",
+        "retries": 0,
+        "batchSize": 16384,
+        "linger": 0,
+        "bufferMemory": 33554432,
+        "acks": "-1",
+        "keySerializer": "org.apache.kafka.common.serialization.StringSerializer",
+        "valueSerializer": "org.apache.kafka.common.serialization.StringSerializer",
+        "otherProperties": {
+          "security.protocol": "$kafka_security_protocol",
+          "sasl.mechanism": "$kafka_sasl_mechanism",
+          "sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"$kafka_username\" password=\"$kafka_password\";"
+        },
+        "addMetadataKeyValuesAsKafkaHeaders": false,
+        "kafkaHeadersCharset": "UTF-8"
+      }
+    },
+    {
+      "createdTime": 0,
+      "additionalInfo": {
+        "description": "",
+        "layoutX": 1053,
+        "layoutY": 400
+      },
+      "type": "org.thingsboard.rule.engine.kafka.TbKafkaNode",
+      "name": "thingsboard-alarm",
+      "debugMode": false,
+      "configuration": {
+        "topicPattern": "thingsboard-alarm",
+        "bootstrapServers": "$kafka_cluster_url",
+        "retries": 0,
+        "batchSize": 16384,
+        "linger": 0,
+        "bufferMemory": 33554432,
+        "acks": "-1",
+        "keySerializer": "org.apache.kafka.common.serialization.StringSerializer",
+        "valueSerializer": "org.apache.kafka.common.serialization.StringSerializer",
+        "otherProperties": {
+          "security.protocol": "$kafka_security_protocol",
+          "sasl.mechanism": "$kafka_sasl_mechanism",
+          "sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"$kafka_username\" password=\"$kafka_password\";"
+        },
+        "addMetadataKeyValuesAsKafkaHeaders": false,
+        "kafkaHeadersCharset": "UTF-8"
+      }
+    },
+    {
+      "createdTime": 0,
+      "additionalInfo": {
+        "description": "",
+        "layoutX": 1054,
+        "layoutY": 251
+      },
+      "type": "org.thingsboard.rule.engine.kafka.TbKafkaNode",
+      "name": "thingsboard-all-messages",
+      "debugMode": false,
+      "configuration": {
+        "topicPattern": "thingsboard-all-messages",
+        "bootstrapServers": "$kafka_cluster_url",
+        "retries": 0,
+        "batchSize": 16384,
+        "linger": 0,
+        "bufferMemory": 33554432,
+        "acks": "-1",
+        "keySerializer": "org.apache.kafka.common.serialization.StringSerializer",
+        "valueSerializer": "org.apache.kafka.common.serialization.StringSerializer",
+        "otherProperties": {
+          "security.protocol": "$kafka_security_protocol",
+          "sasl.mechanism": "$kafka_sasl_mechanism",
+          "sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"$kafka_username\" password=\"$kafka_password\";"
+        },
+        "addMetadataKeyValuesAsKafkaHeaders": false,
+        "kafkaHeadersCharset": "UTF-8"
+      }
+    },
+    {
+      "createdTime": 0,
+      "additionalInfo": {
+        "description": "",
+        "layoutX": 876,
+        "layoutY": 150
+      },
+      "type": "org.thingsboard.rule.engine.flow.TbRuleChainInputNode",
+      "name": "To Root Rule Chain",
+      "debugMode": false,
+      "configuration": {
+        "ruleChainId": "$root_rule_chain_id"
+      }
+    },
+    {
+      "createdTime": 0,
+      "additionalInfo": {
+        "description": "",
+        "layoutX": 550,
+        "layoutY": 226
+      },
+      "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+      "name": "Add Originator Info",
+      "debugMode": false,
+      "configuration": {
+        "jsScript": "return {\n    msg: {\n        msg: msg,\n        metadata: metadata,\n        msgType: msgType,\n    },\n    metadata: metadata,\n    msgType: msgType\n};"
+      }
+    },
+    {
+      "createdTime": 0,
+      "additionalInfo": {
+        "description": "",
+        "layoutX": 312,
+        "layoutY": 150
+      },
+      "type": "org.thingsboard.rule.engine.filter.TbJsSwitchNode",
+      "name": "Switch",
+      "debugMode": false,
+      "configuration": {
+        "jsScript": "return ['ANY']"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "fromIndex": 0,
+      "toIndex": 3,
+      "type": "ANY"
+    },
+    {
+      "fromIndex": 0,
+      "toIndex": 1,
+      "type": "POST_TELEMETRY_REQUEST"
+    },
+    {
+      "fromIndex": 0,
+      "toIndex": 2,
+      "type": "ALARM"
+    },
+    {
+      "fromIndex": 5,
+      "toIndex": 0,
+      "type": "Success"
+    },
+    {
+      "fromIndex": 6,
+      "toIndex": 4,
+      "type": "ANY"
+    },
+    {
+      "fromIndex": 6,
+      "toIndex": 5,
+      "type": "ANY"
+    }
+  ],
+  "ruleChainConnections": null
+}

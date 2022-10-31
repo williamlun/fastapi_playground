@@ -1,0 +1,269 @@
+ATAL-testing:
+  - rssi
+  - loRaSNR
+Adeunis-Tester:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - temperature
+Netvox-R311G:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - illuminance
+Netvox-R313G:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - illuminance
+Vishay-AN106:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - relativeHumidity
+  - temperature
+Senso-AirQualitySensor:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - relativeHumidity
+  - temperature
+Atlasen-AWD2:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - relativeHumidity
+  - temperature
+Netvox-RB11E:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - illuminance
+  - temperature
+  - isOccupied
+  - isDisassembled
+Netvox-R718AB:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - relativeHumidity
+  - temperature
+Netvox-R718IJK:
+  - rssi
+  - loRaSNR
+  - adcRawValue2
+  - batteryLevel
+  - current
+  - fineCurrent
+  - isLowBattery
+  - isActive
+Netvox-R718LB:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - isLowBattery
+  - isActive
+Netvox-R718N3:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - isLowBattery
+  - currentma1
+  - currentma2
+  - currentma3
+  - multiplier1
+  - multiplier2
+  - multiplier3
+Netvox-R718X:
+  - rssi
+  - loRaSNR
+  - angleOfInclination
+  - batteryLevel
+  - isLowBattery
+  - distance
+  - fillPercentage
+  - isTriggered
+  - temperature
+Netvox-R719A:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - isLowBattery
+  - isActive
+Netvox-R720F:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - isLowBattery
+  - isActive
+Netvox-R711:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - relativeHumidity
+  - temperature
+Netvox-R9413:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - relativeHumidity
+  - temperature
+Netvox-RA0715:
+  - rssi
+  - loRaSNR
+  - co2
+  - temperature
+  - relativeHumidity
+PHSensor-ABC:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - illuminance
+Netvox-R831D:
+  - rssi
+  - loRaSNR
+  - relay1
+  - relay2
+  - relay3
+  - input1
+  - input2
+  - input3
+Semtech-RAK811LoraCtrl:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - illuminance
+Semtech-RAK811OTAA:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - illuminance
+Semtech-RAK811miniCtrl:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - illuminance
+Netvox-RB02I:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - isLowBattery
+  - hasAlarm
+Atlasen-AT04:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - illuminance
+  - co
+  - co2
+  - hcho
+  - relativeHumidity
+  - hasMotion
+  - nh3
+  - no2
+  - noiseLevel
+  - o3
+  - pm10
+  - pm1_0
+  - pm2_5
+  - temperature
+  - tvoc
+Atlasen-LeoV2:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - illuminance
+  - noiseLevel
+  - hasMotion
+  - pm10
+  - pm2_5
+  - pm1_0
+  - hcho
+  - o3
+  - temperature
+  - relativeHumidity
+  - co
+  - tvoc
+  - ch4
+  - h2s
+  - nh3
+  - no2
+  - so2
+  - co2
+gFlowPlus-WaterMeter:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - forwardFlow
+  - reverseFlow
+  - instantaneousFlow
+  - flowmeterNumber
+  - pressure
+  - meterStatus
+Imb-PeopleCounter:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - counterA
+  - counterB
+  - deviceStatus
+  - sensorStatus
+  - totalCounterA
+  - totalCounterB
+Netvox-R313W:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - isLowBattery
+  - isWaterLeak1
+  - isWaterLeak2
+  - isWaterLeak
+Milesight-EM500PP:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - pressure
+Milesight-UC300:
+  - rssi
+  - loRaSNR
+  - batteryLevel
+  - DI_1
+  - DI_2
+  - DI_3
+  - DI_4
+  - DO_1
+  - DO_2
+  - isOccupied1
+  - isOccupied2
+  - isOccupied3
+  - isOccupied4
+  - batteryPercentage
+  - temperature1
+  - temperature2
+  - temperature3
+  - temperature4
+  - isActive1
+  - isActive2
+  - isActive3
+  - isActive4
+  - illuminance
+  - hasAlarm
+  - hasWaterLeak
+  - noiseLevel
+  - hasMotion
+  - pm10
+  - pm2_5
+  - pm1_0
+  - hcho
+  - o3
+  - relativeHumidity
+  - co
+  - tvoc
+  - ch4
+  - h2s
+  - nh3
+  - no2
+  - so2
+  - co2
+Manthink-GDOx11:
+  - isActive

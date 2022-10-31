@@ -30,10 +30,10 @@ class ALARM(Type):
 T = TypeVar("T", bound=Type)
 
 
-class Resource(Generic[T],GenericModel):
+class Resource(Generic[T], GenericModel):
 
     name: str
-    type: T.
+    type: T
     icon_uri: str = ""
     owner_managed_access: bool = False
     scopes: set[T.Scope] = set()
