@@ -8,7 +8,7 @@ from loguru import logger
 
 app = fastapi.FastAPI()
 
-MQTT_PATH = os.getenv("MQTT_PATH", "a.txt")
+MQTT_PATH = os.getenv("MQTT_PATH", "mqtt.json")
 BACKNET_PATH = os.getenv("BACKNET_PATH", "/config/bacnet.json")
 TB_GATEWAY_PATH = os.getenv("TB_GATEWAY_PATH", "/config/tb_gateway.yaml")
 
@@ -20,10 +20,10 @@ def healthiness():
 
 @app.post("/mqtt-config")
 async def read_config(file: fastapi.UploadFile):
+    content = file.file.read()
     try:
-        content = file.file.read()
-        fdst = open(MQTT_PATH, "w")
-        shutil.copyfileobj(content, fdst)
+        with open(MQTT_PATH, "wb") as f:
+            f.write(content)
         logger.info(f"mqtt config saved to {MQTT_PATH}")
         return f"mqtt config saved to {MQTT_PATH}"
     except BaseException as e:  # pylint: disable=broad-except

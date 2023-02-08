@@ -9,8 +9,8 @@ from loguru import logger
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
-    client.subscribe("application/4/#")
-    # client.subscribe("application/7/#")
+    client.subscribe("application/#")
+    # client.subscribe("application/18/#")
 
 
 def on_message(client, userdata, message):

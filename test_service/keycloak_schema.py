@@ -16,6 +16,13 @@ class ImportModel(pydantic.BaseModel):
     #     allow_population_by_field_name = True
 
 
+class Customer(pydantic.BaseModel):
+    id: str = ""
+    name: str = ""
+    email: str = ""
+    phone: str = ""
+
+
 class User(ImportModel):
     class Credentials(pydantic.BaseModel):
         type: str = "password"

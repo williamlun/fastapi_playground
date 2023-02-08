@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  tb-gateway:
+    image: thingsboard/tb-gateway
+    restart: always
+    volumes:
+      - ./tb-gateway/config:/thingsboard_gateway/config
+      - ./tb-gateway/extensions:/thingsboard_gateway/extensions
+      - ./tb-gateway/logs:/thingsboard_gateway/logs
+    ports:
+      - 47809:47809/udp
+    network_mode: host
+
+  tb-gateway-web:
+    image: william/test-iot-gateway-web
+    restart: always
+    volumes:
+      - ./tb-gateway/config:/src/src/config
+    ports:
+      - 8000:8000
+    environment:
+      - MQTT_PATH=./config/mqtt.json
+      - BACKNET_PATH=./config/bacnet.json
+      - TB_GATEWAY_PATH=./config/tb_gateway.yaml
+      - USERNAME=username
+      - PASSWORD=password
