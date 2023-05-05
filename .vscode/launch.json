@@ -22,7 +22,7 @@
             "env": {
                 "THINGSBOARD_HOST": "172.16.14.50",
                 "THINGSBOARD_USERNAME": "tenant@thingsboard.org",
-                "THINGSBOARD_PASSWORD": "8NR41mEOzGxcCt",
+                "THINGSBOARD_PASSWORD": "",
             },
             "justMyCode": true
         }

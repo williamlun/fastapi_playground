@@ -3,7 +3,7 @@ import requests
 base_url = "https://172.16.14.162/iot-cms-webserver/sites/hklah/devices/"
 
 payload = {}
-headers = {"Authorization": "Basic YWRtaW46Z0UzWXNmUE5wc1JMVDQ="}
+headers = {"Authorization": "Basic "}
 
 devices = [
     "Atlasen-LeoV2-AC1F09FFFE078028",

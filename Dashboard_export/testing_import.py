@@ -26,6 +26,8 @@ def get_token():
 
 ###########################################################################################
 
+###################################Entity handler###########################################
+
 
 ####################################Dashboard#########################################
 def extract_dashboard_from_zip(file_name: str):
@@ -43,7 +45,8 @@ def process_dashboard(dashboard: dict):
     mapping = dashboard.pop("mapping")
     # process mapping to UUID:UUID
     uuid_mapping = {}
-
+    for key, value in mapping.items():
+        result_uuid = entity_handler(value)
     # find and replace id in dashboard
     # post dashboard
 
@@ -59,7 +62,7 @@ def main():
     for dashboard in dashboards:
         new_dashboard = process_dashboard(dashboard)
 
-    print(all_dashboard)
+    print(dashboards)
 
 
 if __name__ == "__main__":
