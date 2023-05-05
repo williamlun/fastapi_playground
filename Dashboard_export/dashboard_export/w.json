@@ -1,0 +1,410 @@
+{
+    "title": "w",
+    "image": null,
+    "assignedCustomers": null,
+    "mobileHide": false,
+    "mobileOrder": null,
+    "configuration": {
+        "description": "",
+        "widgets": {
+            "b3aee8f9-9526-e3ea-74be-2f06c86ce72b": {
+                "isSystemType": true,
+                "bundleAlias": "control_widgets",
+                "typeAlias": "update_attributes",
+                "type": "rpc",
+                "title": "New widget",
+                "image": null,
+                "description": null,
+                "sizeX": 4,
+                "sizeY": 2,
+                "config": {
+                    "showTitle": false,
+                    "backgroundColor": "#e6e7e8",
+                    "color": "rgba(0, 0, 0, 0.87)",
+                    "padding": "0px",
+                    "settings": {
+                        "styleButton": {
+                            "isRaised": true,
+                            "isPrimary": false
+                        },
+                        "entityParameters": "{}",
+                        "entityAttributeType": "SERVER_SCOPE",
+                        "buttonText": "Update device attribute"
+                    },
+                    "title": "New Update device attribute",
+                    "dropShadow": true,
+                    "enableFullscreen": false,
+                    "widgetStyle": {},
+                    "titleStyle": {
+                        "fontSize": "16px",
+                        "fontWeight": 400
+                    },
+                    "useDashboardTimewindow": true,
+                    "showLegend": false,
+                    "actions": {},
+                    "targetDeviceAliases": [],
+                    "datasources": [],
+                    "targetDeviceAliasIds": [
+                        "287a30f7-9f5c-21fe-27c9-bf76aac186b2"
+                    ]
+                },
+                "row": 0,
+                "col": 0,
+                "id": "b3aee8f9-9526-e3ea-74be-2f06c86ce72b"
+            },
+            "c5017101-864b-f09e-d85e-248e408e0bb3": {
+                "isSystemType": false,
+                "bundleAlias": "control_textbox",
+                "typeAlias": "28",
+                "type": "rpc",
+                "title": "New widget",
+                "image": null,
+                "description": null,
+                "sizeX": 4,
+                "sizeY": 2,
+                "config": {
+                    "showTitle": false,
+                    "backgroundColor": "#e6e7e8",
+                    "color": "rgba(0, 0, 0, 0.87)",
+                    "padding": "0px",
+                    "settings": {
+                        "requestTimeout": 5000,
+                        "oneWayElseTwoWay": true,
+                        "buttonText": "Send RPC",
+                        "styleButton": {
+                            "isRaised": true,
+                            "isPrimary": false
+                        },
+                        "methodName": "228",
+                        "methodParams": "{}",
+                        "showError": false,
+                        "requestPersistent": false
+                    },
+                    "title": "New 28",
+                    "dropShadow": true,
+                    "enableFullscreen": false,
+                    "widgetStyle": {},
+                    "titleStyle": {
+                        "fontSize": "16px",
+                        "fontWeight": 400
+                    },
+                    "useDashboardTimewindow": true,
+                    "showLegend": false,
+                    "actions": {},
+                    "targetDeviceAliases": [],
+                    "datasources": [],
+                    "targetDeviceAliasIds": [
+                        "287a30f7-9f5c-21fe-27c9-bf76aac186b2"
+                    ]
+                },
+                "row": 0,
+                "col": 0,
+                "id": "c5017101-864b-f09e-d85e-248e408e0bb3"
+            }
+        },
+        "states": {
+            "default": {
+                "name": "w",
+                "root": true,
+                "layouts": {
+                    "main": {
+                        "widgets": {
+                            "b3aee8f9-9526-e3ea-74be-2f06c86ce72b": {
+                                "sizeX": 4,
+                                "sizeY": 2,
+                                "row": 0,
+                                "col": 8
+                            },
+                            "c5017101-864b-f09e-d85e-248e408e0bb3": {
+                                "sizeX": 4,
+                                "sizeY": 2,
+                                "row": 2,
+                                "col": 0
+                            }
+                        },
+                        "gridSettings": {
+                            "backgroundColor": "#eeeeee",
+                            "columns": 24,
+                            "margin": 10,
+                            "backgroundSizeMode": "100%"
+                        }
+                    }
+                }
+            }
+        },
+        "entityAliases": {
+            "287a30f7-9f5c-21fe-27c9-bf76aac186b2": {
+                "id": "287a30f7-9f5c-21fe-27c9-bf76aac186b2",
+                "alias": "signleEntity_Device",
+                "filter": {
+                    "type": "singleEntity",
+                    "resolveMultiple": false,
+                    "singleEntity": {
+                        "entityType": "DEVICE",
+                        "id": "9379ca10-df30-11ed-bd92-f3c04ecaec3b"
+                    }
+                }
+            },
+            "09eae3a7-9de1-6b63-bbb8-fdc6d06af7be": {
+                "id": "09eae3a7-9de1-6b63-bbb8-fdc6d06af7be",
+                "alias": "SingleEntity_asset",
+                "filter": {
+                    "type": "singleEntity",
+                    "resolveMultiple": false,
+                    "singleEntity": {
+                        "entityType": "ASSET",
+                        "id": "e96526f0-cee0-11ed-87fe-e9e74a5699d6"
+                    }
+                }
+            },
+            "a63f2cf8-6be3-48eb-c79f-2d95ae75df4a": {
+                "id": "a63f2cf8-6be3-48eb-c79f-2d95ae75df4a",
+                "alias": "SignleEntity_Tenant",
+                "filter": {
+                    "type": "singleEntity",
+                    "resolveMultiple": false,
+                    "singleEntity": {
+                        "entityType": "TENANT",
+                        "id": "52ce3cf0-cedf-11ed-9540-3991ceb6b818"
+                    }
+                }
+            },
+            "f3a7faa1-9228-88e8-cf90-07c8686b26fe": {
+                "id": "f3a7faa1-9228-88e8-cf90-07c8686b26fe",
+                "alias": "SignleEntity_Customer",
+                "filter": {
+                    "type": "singleEntity",
+                    "resolveMultiple": false,
+                    "singleEntity": {
+                        "entityType": "CUSTOMER",
+                        "id": "45128b00-cee1-11ed-87fe-e9e74a5699d6"
+                    }
+                }
+            },
+            "31b950fa-0ac9-5220-8929-2794fb507fe6": {
+                "id": "31b950fa-0ac9-5220-8929-2794fb507fe6",
+                "alias": "SignleEntity_User",
+                "filter": {
+                    "type": "singleEntity",
+                    "resolveMultiple": false,
+                    "singleEntity": {
+                        "entityType": "USER",
+                        "id": "539cb080-cedf-11ed-9540-3991ceb6b818"
+                    }
+                }
+            },
+            "d202450e-b93b-6545-091e-4c961bb49441": {
+                "id": "d202450e-b93b-6545-091e-4c961bb49441",
+                "alias": "SignleEntity_Dashboard",
+                "filter": {
+                    "type": "singleEntity",
+                    "resolveMultiple": false,
+                    "singleEntity": {
+                        "entityType": "DASHBOARD",
+                        "id": "952b6810-e9ac-11ed-bd92-f3c04ecaec3b"
+                    }
+                }
+            },
+            "19b982af-2663-df83-8def-0db09b71dd97": {
+                "id": "19b982af-2663-df83-8def-0db09b71dd97",
+                "alias": "SignleEntity_CurrentCustomer",
+                "filter": {
+                    "type": "singleEntity",
+                    "resolveMultiple": false,
+                    "singleEntity": {
+                        "entityType": "CURRENT_CUSTOMER",
+                        "id": "45128b00-cee1-11ed-87fe-e9e74a5699d6"
+                    }
+                }
+            },
+            "8fce41eb-a009-d7f4-3323-629a7ec1ea79": {
+                "id": "8fce41eb-a009-d7f4-3323-629a7ec1ea79",
+                "alias": "SignleEntity_current Tenant",
+                "filter": {
+                    "type": "singleEntity",
+                    "resolveMultiple": false,
+                    "singleEntity": {
+                        "entityType": "CURRENT_TENANT",
+                        "id": "13814000-1dd2-11b2-8080-808080808080"
+                    }
+                }
+            },
+            "e1b9970b-9bf1-9f54-f328-74b985420852": {
+                "id": "e1b9970b-9bf1-9f54-f328-74b985420852",
+                "alias": "EntityList_device",
+                "filter": {
+                    "type": "entityList",
+                    "resolveMultiple": false,
+                    "entityType": "DEVICE",
+                    "entityList": [
+                        "e13153f0-e9a7-11ed-bd92-f3c04ecaec3b",
+                        "e15a5fc0-e9a7-11ed-bd92-f3c04ecaec3b",
+                        "e14d6770-e9a7-11ed-bd92-f3c04ecaec3b"
+                    ]
+                }
+            },
+            "b1ddc5ac-516d-ae99-bc4c-4b91d331aaea": {
+                "id": "b1ddc5ac-516d-ae99-bc4c-4b91d331aaea",
+                "alias": "EntityList_Customer",
+                "filter": {
+                    "type": "entityList",
+                    "resolveMultiple": true,
+                    "entityType": "CUSTOMER",
+                    "entityList": [
+                        "45128b00-cee1-11ed-87fe-e9e74a5699d6",
+                        "53b6c830-cedf-11ed-9540-3991ceb6b818"
+                    ]
+                }
+            },
+            "f5dd4c96-c17f-fd4c-bbe7-02519efc64ad": {
+                "id": "f5dd4c96-c17f-fd4c-bbe7-02519efc64ad",
+                "alias": "EntityName_device",
+                "filter": {
+                    "type": "entityName",
+                    "resolveMultiple": true,
+                    "entityType": "DEVICE",
+                    "entityNameFilter": "Atlasen-LeoV2"
+                }
+            },
+            "4ab6bccf-1ec3-bd8c-6269-53e053c317e7": {
+                "id": "4ab6bccf-1ec3-bd8c-6269-53e053c317e7",
+                "alias": "EntityName_Customer",
+                "filter": {
+                    "type": "entityName",
+                    "resolveMultiple": true,
+                    "entityType": "CUSTOMER",
+                    "entityNameFilter": "Customer"
+                }
+            },
+            "40d3560d-61d9-6e11-ce8d-292e669b74aa": {
+                "id": "40d3560d-61d9-6e11-ce8d-292e669b74aa",
+                "alias": "EntityType_device",
+                "filter": {
+                    "type": "entityType",
+                    "resolveMultiple": true,
+                    "entityType": "DEVICE"
+                }
+            },
+            "cf3988c4-8205-09ef-1457-ce2712eea4b3": {
+                "id": "cf3988c4-8205-09ef-1457-ce2712eea4b3",
+                "alias": "EntityType_customer",
+                "filter": {
+                    "type": "entityType",
+                    "resolveMultiple": true,
+                    "entityType": "CUSTOMER"
+                }
+            },
+            "09b5327b-a033-2a8c-30b6-6cffe4f21610": {
+                "id": "09b5327b-a033-2a8c-30b6-6cffe4f21610",
+                "alias": "DeviceType_1",
+                "filter": {
+                    "type": "deviceType",
+                    "resolveMultiple": true,
+                    "deviceType": "Atlasen-LeoV2",
+                    "deviceNameFilter": ""
+                }
+            },
+            "4ddfc8fe-1348-e51b-2170-b86e16791a4d": {
+                "id": "4ddfc8fe-1348-e51b-2170-b86e16791a4d",
+                "alias": "DeviceType_2",
+                "filter": {
+                    "type": "deviceType",
+                    "resolveMultiple": true,
+                    "deviceType": "AirGuard-LRS10701",
+                    "deviceNameFilter": ""
+                }
+            }
+        },
+        "filters": {},
+        "timewindow": {
+            "displayValue": "",
+            "hideInterval": false,
+            "hideAggregation": false,
+            "hideAggInterval": false,
+            "hideTimezone": false,
+            "selectedTab": 0,
+            "realtime": {
+                "realtimeType": 0,
+                "interval": 1000,
+                "timewindowMs": 60000,
+                "quickInterval": "CURRENT_DAY"
+            },
+            "history": {
+                "historyType": 0,
+                "interval": 1000,
+                "timewindowMs": 60000,
+                "fixedTimewindow": {
+                    "startTimeMs": 1681967410959,
+                    "endTimeMs": 1682053810959
+                },
+                "quickInterval": "CURRENT_DAY"
+            },
+            "aggregation": {
+                "type": "AVG",
+                "limit": 25000
+            }
+        },
+        "settings": {
+            "stateControllerId": "entity",
+            "showTitle": false,
+            "showDashboardsSelect": true,
+            "showEntitiesSelect": true,
+            "showDashboardTimewindow": true,
+            "showDashboardExport": true,
+            "toolbarAlwaysOpen": true
+        }
+    },
+    "name": "w",
+    "mapping": {
+        "9379ca10-df30-11ed-bd92-f3c04ecaec3b": {
+            "entity_id": "9379ca10-df30-11ed-bd92-f3c04ecaec3b",
+            "entity_type": "DEVICE",
+            "name": "Avantec-TA692FC-0012bdfffe02ac8c"
+        },
+        "e96526f0-cee0-11ed-87fe-e9e74a5699d6": {
+            "entity_id": "e96526f0-cee0-11ed-87fe-e9e74a5699d6",
+            "entity_type": "ASSET",
+            "name": "Main_tb-postgres-0"
+        },
+        "52ce3cf0-cedf-11ed-9540-3991ceb6b818": {
+            "entity_id": "52ce3cf0-cedf-11ed-9540-3991ceb6b818",
+            "entity_type": "TENANT",
+            "name": "Tenant"
+        },
+        "45128b00-cee1-11ed-87fe-e9e74a5699d6": {
+            "entity_id": "45128b00-cee1-11ed-87fe-e9e74a5699d6",
+            "entity_type": "CUSTOMER",
+            "name": "dev_kube_node_01"
+        },
+        "539cb080-cedf-11ed-9540-3991ceb6b818": {
+            "entity_id": "539cb080-cedf-11ed-9540-3991ceb6b818",
+            "entity_type": "USER",
+            "name": "tenant@thingsboard.org"
+        },
+        "952b6810-e9ac-11ed-bd92-f3c04ecaec3b": {
+            "entity_id": "952b6810-e9ac-11ed-bd92-f3c04ecaec3b",
+            "entity_type": "DASHBOARD",
+            "name": "HK Land Sensor"
+        },
+        "e13153f0-e9a7-11ed-bd92-f3c04ecaec3b": {
+            "entity_id": "e13153f0-e9a7-11ed-bd92-f3c04ecaec3b",
+            "entity_type": "DEVICE",
+            "name": "AirGuard-LRS10701-70B3D58C90000ADD"
+        },
+        "e15a5fc0-e9a7-11ed-bd92-f3c04ecaec3b": {
+            "entity_id": "e15a5fc0-e9a7-11ed-bd92-f3c04ecaec3b",
+            "entity_type": "DEVICE",
+            "name": "AirGuard-LRS10701-70B3D58C90000AE6"
+        },
+        "e14d6770-e9a7-11ed-bd92-f3c04ecaec3b": {
+            "entity_id": "e14d6770-e9a7-11ed-bd92-f3c04ecaec3b",
+            "entity_type": "DEVICE",
+            "name": "AirGuard-LRS10701-70B3D58C90000BB7"
+        },
+        "53b6c830-cedf-11ed-9540-3991ceb6b818": {
+            "entity_id": "53b6c830-cedf-11ed-9540-3991ceb6b818",
+            "entity_type": "CUSTOMER",
+            "name": "Customer A"
+        }
+    }
+}

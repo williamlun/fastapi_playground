@@ -1,0 +1,439 @@
+{
+    "title": "Testdownlink",
+    "image": null,
+    "assignedCustomers": null,
+    "mobileHide": false,
+    "mobileOrder": null,
+    "configuration": {
+        "description": "",
+        "widgets": {
+            "b0600292-75a2-2251-e3f1-495689005cc8": {
+                "isSystemType": true,
+                "bundleAlias": "cards",
+                "typeAlias": "simple_card",
+                "type": "latest",
+                "title": "New widget",
+                "image": null,
+                "description": null,
+                "sizeX": 5,
+                "sizeY": 3,
+                "config": {
+                    "datasources": [
+                        {
+                            "type": "entity",
+                            "name": null,
+                            "entityAliasId": "6ffe4695-db86-88bc-2e1a-566c0644ab73",
+                            "filterId": null,
+                            "dataKeys": [
+                                {
+                                    "name": "setTemperature",
+                                    "type": "timeseries",
+                                    "label": "Current temperature",
+                                    "color": "#2196f3",
+                                    "settings": {},
+                                    "_hash": 0.1074733424972727,
+                                    "units": null,
+                                    "decimals": null,
+                                    "funcBody": null,
+                                    "usePostProcessing": null,
+                                    "postFuncBody": null
+                                }
+                            ]
+                        }
+                    ],
+                    "timewindow": {
+                        "realtime": {
+                            "timewindowMs": 60000
+                        }
+                    },
+                    "showTitle": false,
+                    "backgroundColor": "#ff5722",
+                    "color": "rgba(255, 255, 255, 0.87)",
+                    "padding": "16px",
+                    "settings": {
+                        "labelPosition": "top"
+                    },
+                    "title": "New Simple card",
+                    "dropShadow": true,
+                    "enableFullscreen": true,
+                    "titleStyle": {
+                        "fontSize": "16px",
+                        "fontWeight": 400
+                    },
+                    "units": "\u00b0C",
+                    "decimals": 0,
+                    "useDashboardTimewindow": true,
+                    "showLegend": false,
+                    "widgetStyle": {},
+                    "actions": {}
+                },
+                "row": 0,
+                "col": 0,
+                "id": "b0600292-75a2-2251-e3f1-495689005cc8"
+            },
+            "a55cb374-3c26-c754-ee78-e8675e519c61": {
+                "isSystemType": false,
+                "bundleAlias": "control_textbox",
+                "typeAlias": "v233",
+                "type": "rpc",
+                "title": "New widget",
+                "image": null,
+                "description": null,
+                "sizeX": 4,
+                "sizeY": 2,
+                "config": {
+                    "showTitle": false,
+                    "backgroundColor": "rgba(122,178,233,0)",
+                    "color": "rgba(0, 0, 0, 0.87)",
+                    "padding": "0px",
+                    "settings": {
+                        "requestTimeout": 5000,
+                        "oneWayElseTwoWay": true,
+                        "buttonText": "Send RPC",
+                        "styleButton": {
+                            "isRaised": true,
+                            "isPrimary": false
+                        },
+                        "methodName": "0012bdfffe02ac8c",
+                        "methodParams": "{}",
+                        "showError": false,
+                        "requestPersistent": false
+                    },
+                    "title": "UI update version",
+                    "dropShadow": true,
+                    "enableFullscreen": false,
+                    "widgetStyle": {},
+                    "titleStyle": {
+                        "fontSize": "16px",
+                        "fontWeight": 400
+                    },
+                    "useDashboardTimewindow": true,
+                    "showLegend": false,
+                    "actions": {},
+                    "targetDeviceAliases": [],
+                    "datasources": [],
+                    "targetDeviceAliasIds": [
+                        "6ffe4695-db86-88bc-2e1a-566c0644ab73"
+                    ],
+                    "widgetCss": "",
+                    "noDataDisplayMessage": ""
+                },
+                "row": 0,
+                "col": 0,
+                "id": "a55cb374-3c26-c754-ee78-e8675e519c61"
+            },
+            "de00945c-67f0-a057-3467-5bf4d38e63ab": {
+                "isSystemType": false,
+                "bundleAlias": "control_textbox",
+                "typeAlias": "v2342",
+                "type": "rpc",
+                "title": "New widget",
+                "image": null,
+                "description": null,
+                "sizeX": 4,
+                "sizeY": 2,
+                "config": {
+                    "showTitle": false,
+                    "backgroundColor": "#e6e7e8",
+                    "color": "rgba(0, 0, 0, 0.87)",
+                    "padding": "0px",
+                    "settings": {
+                        "requestTimeout": 5000,
+                        "oneWayElseTwoWay": true,
+                        "buttonText": "Send RPC",
+                        "styleButton": {
+                            "isRaised": true,
+                            "isPrimary": false
+                        },
+                        "methodName": "downLink",
+                        "showError": false,
+                        "requestPersistent": false,
+                        "methodParams": "{\n    \"confirmed\": true,\n    \"fPort\": 90,\n    \"object\": {\n        \"setTemperature\": 14,\n        \"fanMode\": 2,\n        \"threshold\": 4,\n        \"systemState\": 1,\n        \"coolPband\": 2.6,\n        \"coolItime\": 90,\n        \"kFactor\": 5\n    },\n    \"devEUI\": \"0012bdfffe02ac8c\"\n}"
+                    },
+                    "title": "New 4 Switch test 2",
+                    "dropShadow": true,
+                    "enableFullscreen": false,
+                    "widgetStyle": {},
+                    "titleStyle": {
+                        "fontSize": "16px",
+                        "fontWeight": 400
+                    },
+                    "useDashboardTimewindow": true,
+                    "showLegend": false,
+                    "actions": {},
+                    "targetDeviceAliases": [],
+                    "datasources": [],
+                    "targetDeviceAliasIds": [
+                        "6ffe4695-db86-88bc-2e1a-566c0644ab73"
+                    ]
+                },
+                "row": 0,
+                "col": 0,
+                "id": "de00945c-67f0-a057-3467-5bf4d38e63ab"
+            },
+            "2ce77d7b-bb46-f592-a4b3-592ea21d4155": {
+                "isSystemType": false,
+                "bundleAlias": "control_textbox",
+                "typeAlias": "for_test",
+                "type": "rpc",
+                "title": "New widget",
+                "image": null,
+                "description": null,
+                "sizeX": 4,
+                "sizeY": 2,
+                "config": {
+                    "showTitle": false,
+                    "backgroundColor": "#e6e7e8",
+                    "color": "rgba(0, 0, 0, 0.87)",
+                    "padding": "0px",
+                    "settings": {
+                        "requestTimeout": 5000,
+                        "oneWayElseTwoWay": true,
+                        "buttonText": "Send RPC",
+                        "styleButton": {
+                            "isRaised": true,
+                            "isPrimary": false
+                        },
+                        "methodParams": "{}",
+                        "showError": false,
+                        "requestPersistent": false,
+                        "methodName": ","
+                    },
+                    "title": "New FOR TEST",
+                    "dropShadow": true,
+                    "enableFullscreen": false,
+                    "widgetStyle": {},
+                    "titleStyle": {
+                        "fontSize": "16px",
+                        "fontWeight": 400
+                    },
+                    "useDashboardTimewindow": true,
+                    "showLegend": false,
+                    "actions": {},
+                    "targetDeviceAliases": [],
+                    "datasources": [],
+                    "targetDeviceAliasIds": [
+                        "6ffe4695-db86-88bc-2e1a-566c0644ab73"
+                    ]
+                },
+                "row": 0,
+                "col": 0,
+                "id": "2ce77d7b-bb46-f592-a4b3-592ea21d4155"
+            },
+            "1a713977-c1f4-aa8d-e6be-fefa88a7005b": {
+                "isSystemType": true,
+                "bundleAlias": "control_widgets",
+                "typeAlias": "rpcbutton",
+                "type": "rpc",
+                "title": "New widget",
+                "image": null,
+                "description": null,
+                "sizeX": 4,
+                "sizeY": 2,
+                "config": {
+                    "targetDeviceAliases": [],
+                    "showTitle": false,
+                    "backgroundColor": "#b2b2b2",
+                    "color": "rgba(219,9,9,0.87)",
+                    "padding": "0px",
+                    "settings": {
+                        "requestTimeout": 5000,
+                        "oneWayElseTwoWay": true,
+                        "buttonText": "Send RPC",
+                        "styleButton": {
+                            "isRaised": true,
+                            "isPrimary": false
+                        },
+                        "showError": true,
+                        "requestPersistent": false,
+                        "methodParams": "{\n    \"confirmed\": true,\n    \"fPort\": 90,\n    \"object\": {\n        \"setTemperature\": 14,\n        \"fanMode\": 0,\n        \"threshold\": 4,\n        \"systemState\": 1,\n        \"coolPband\": 2.6,\n        \"coolItime\": 90,\n        \"kFactor\": 5\n    },\n    \"devEUI\": \"0012bdfffe02ac8c\"\n}",
+                        "methodName": "downLink"
+                    },
+                    "title": "New RPC Button",
+                    "dropShadow": true,
+                    "enableFullscreen": false,
+                    "widgetStyle": {},
+                    "titleStyle": {
+                        "fontSize": "16px",
+                        "fontWeight": 400
+                    },
+                    "useDashboardTimewindow": true,
+                    "showLegend": false,
+                    "actions": {},
+                    "datasources": [],
+                    "targetDeviceAliasIds": [
+                        "6ffe4695-db86-88bc-2e1a-566c0644ab73"
+                    ],
+                    "widgetCss": "",
+                    "noDataDisplayMessage": ""
+                },
+                "row": 0,
+                "col": 0,
+                "id": "1a713977-c1f4-aa8d-e6be-fefa88a7005b"
+            },
+            "ec40d788-b203-592c-1731-f89223e22c5b": {
+                "isSystemType": false,
+                "bundleAlias": "control_textbox",
+                "typeAlias": "v39",
+                "type": "rpc",
+                "title": "New widget",
+                "image": null,
+                "description": null,
+                "sizeX": 4,
+                "sizeY": 2,
+                "config": {
+                    "showTitle": false,
+                    "backgroundColor": "#e6e7e8",
+                    "color": "rgba(0, 0, 0, 0.87)",
+                    "padding": "0px",
+                    "settings": {
+                        "requestTimeout": 5000,
+                        "oneWayElseTwoWay": true,
+                        "buttonText": "Send RPC",
+                        "styleButton": {
+                            "isRaised": true,
+                            "isPrimary": false
+                        },
+                        "methodName": "rpcCommand",
+                        "methodParams": "{}",
+                        "showError": false,
+                        "requestPersistent": false
+                    },
+                    "title": "New v39",
+                    "dropShadow": true,
+                    "enableFullscreen": false,
+                    "widgetStyle": {},
+                    "titleStyle": {
+                        "fontSize": "16px",
+                        "fontWeight": 400
+                    },
+                    "useDashboardTimewindow": true,
+                    "showLegend": false,
+                    "actions": {},
+                    "targetDeviceAliases": [],
+                    "datasources": [],
+                    "targetDeviceAliasIds": [
+                        "6ffe4695-db86-88bc-2e1a-566c0644ab73"
+                    ]
+                },
+                "row": 0,
+                "col": 0,
+                "id": "ec40d788-b203-592c-1731-f89223e22c5b"
+            }
+        },
+        "states": {
+            "default": {
+                "name": "Testdownlink",
+                "root": true,
+                "layouts": {
+                    "main": {
+                        "widgets": {
+                            "b0600292-75a2-2251-e3f1-495689005cc8": {
+                                "sizeX": 9,
+                                "sizeY": 4,
+                                "row": 0,
+                                "col": 15
+                            },
+                            "a55cb374-3c26-c754-ee78-e8675e519c61": {
+                                "sizeX": 9,
+                                "sizeY": 5,
+                                "row": 4,
+                                "col": 15
+                            },
+                            "de00945c-67f0-a057-3467-5bf4d38e63ab": {
+                                "sizeX": 7,
+                                "sizeY": 4,
+                                "row": 0,
+                                "col": 7
+                            },
+                            "2ce77d7b-bb46-f592-a4b3-592ea21d4155": {
+                                "sizeX": 6,
+                                "sizeY": 3,
+                                "row": 2,
+                                "col": 0
+                            },
+                            "1a713977-c1f4-aa8d-e6be-fefa88a7005b": {
+                                "sizeX": 4,
+                                "sizeY": 2,
+                                "row": 0,
+                                "col": 0
+                            },
+                            "ec40d788-b203-592c-1731-f89223e22c5b": {
+                                "sizeX": 8,
+                                "sizeY": 5,
+                                "row": 5,
+                                "col": 0
+                            }
+                        },
+                        "gridSettings": {
+                            "backgroundColor": "#eeeeee",
+                            "columns": 24,
+                            "margin": 10,
+                            "backgroundSizeMode": "100%"
+                        }
+                    }
+                }
+            }
+        },
+        "entityAliases": {
+            "6ffe4695-db86-88bc-2e1a-566c0644ab73": {
+                "id": "6ffe4695-db86-88bc-2e1a-566c0644ab73",
+                "alias": "Avantec-TA692FC",
+                "filter": {
+                    "type": "singleEntity",
+                    "resolveMultiple": false,
+                    "singleEntity": {
+                        "entityType": "DEVICE",
+                        "id": "93496b40-df30-11ed-bd92-f3c04ecaec3b"
+                    }
+                }
+            }
+        },
+        "filters": {},
+        "timewindow": {
+            "displayValue": "",
+            "hideInterval": false,
+            "hideAggregation": false,
+            "hideAggInterval": false,
+            "hideTimezone": false,
+            "selectedTab": 0,
+            "realtime": {
+                "realtimeType": 0,
+                "interval": 1000,
+                "timewindowMs": 60000,
+                "quickInterval": "CURRENT_DAY"
+            },
+            "history": {
+                "historyType": 0,
+                "interval": 1000,
+                "timewindowMs": 60000,
+                "fixedTimewindow": {
+                    "startTimeMs": 1680160997360,
+                    "endTimeMs": 1680247397360
+                },
+                "quickInterval": "CURRENT_DAY"
+            },
+            "aggregation": {
+                "type": "AVG",
+                "limit": 25000
+            }
+        },
+        "settings": {
+            "stateControllerId": "entity",
+            "showTitle": false,
+            "showDashboardsSelect": true,
+            "showEntitiesSelect": true,
+            "showDashboardTimewindow": true,
+            "showDashboardExport": true,
+            "toolbarAlwaysOpen": true
+        }
+    },
+    "name": "Testdownlink",
+    "mapping": {
+        "93496b40-df30-11ed-bd92-f3c04ecaec3b": {
+            "entity_id": "93496b40-df30-11ed-bd92-f3c04ecaec3b",
+            "entity_type": "DEVICE",
+            "name": "Avantec-TA692FC-3f53017321005a11"
+        }
+    }
+}

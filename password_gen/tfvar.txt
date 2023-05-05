@@ -1,0 +1,55 @@
+# deployment information
+docker_username = ""
+docker_password = ""
+aws_profile = ""
+config_context_site = ""
+config_context_cloud = ""
+config_context_office = ""
+repository_username = ""
+repository_password = ""
+site_ip = ""
+keycloak_realm = ""
+grafana_tsdb_database = ""
+site_name = ""
+gitlab_runner_tags = ""
+gitlab_runner_registration_token = ""
+cm_aws_region = ""
+cm_aws_access_key = ""
+cm_aws_secret_key = ""
+iot_gateway_webserver_url = ""
+deploy_iot_gateway = false
+deploy_minio = false
+
+
+# fixed or semi-fixed configuration
+cs_user = ""
+cs_mosquitto_username = ""
+cs_gateway_entry_port = 1700
+cs_pg_user = ""  # CANNOT use "postgres"
+minio_auth_root_user = ""
+tb_username = ""
+thingsboard_sysadmin_username = ""
+thingsboard_client_id = ""
+alarm_service_client_id = ""
+grafana_client_id = ""
+grafana_admin_user = ""
+grafana_hostpath = "/dashboard"
+cms_username = ""
+
+
+# configuration to generate
+cs_password = ""
+cs_mosquitto_password = ""
+cs_pg_password = ""
+data_svc_tsdb_password = ""
+minio_auth_root_password = ""
+tb_password = ""
+thingsboard_sysadmin_password = ""
+thingsboard_client_secret = ""
+asset_mgmt_svc_neo4j_password = ""
+data_service_secret = ""
+alarm_service_secret = ""
+grafana_client_secret = ""
+grafana_admin_password = ""
+cms_password = ""
+keycloak_default_client_secret = ""

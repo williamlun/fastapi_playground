@@ -1,0 +1,149 @@
+{
+    "general": {
+        "objectName": "dev_kube_node_01 BACnet gateway",
+        "address": "0.0.0.0:47808",
+        "objectIdentifier": 599,
+        "maxApduLengthAccepted": 1476,
+        "segmentationSupported": "segmentedBoth",
+        "vendorIdentifier": 15
+    },
+    "devices": [
+        {
+            "deviceName": "bacnet-es-172-16-14-177-47808",
+            "deviceType": "default",
+            "address": "172.16.14.177:47808",
+            "pollPeriod": 10000,
+            "attributes": [
+                {
+                    "key": "testAttribute",
+                    "type": "double",
+                    "objectId": "analogValue:1",
+                    "propertyId": "presentValue"
+                }
+            ],
+            "timeseries": [
+                {
+                    "key": "analogValue-5",
+                    "type": "double",
+                    "objectId": "analogValue:5",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-7",
+                    "type": "double",
+                    "objectId": "analogValue:7",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-8",
+                    "type": "double",
+                    "objectId": "analogValue:8",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-9",
+                    "type": "double",
+                    "objectId": "analogValue:9",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-10",
+                    "type": "double",
+                    "objectId": "analogValue:10",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-11",
+                    "type": "double",
+                    "objectId": "analogValue:11",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-12",
+                    "type": "double",
+                    "objectId": "analogValue:12",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-31",
+                    "type": "double",
+                    "objectId": "analogValue:31",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-30",
+                    "type": "double",
+                    "objectId": "analogValue:30",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-28",
+                    "type": "double",
+                    "objectId": "analogValue:28",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-29",
+                    "type": "double",
+                    "objectId": "analogValue:29",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-26",
+                    "type": "double",
+                    "objectId": "analogValue:26",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-25",
+                    "type": "double",
+                    "objectId": "analogValue:25",
+                    "propertyId": "presentValue"
+                },
+                {
+                    "key": "analogValue-24",
+                    "type": "double",
+                    "objectId": "analogValue:24",
+                    "propertyId": "presentValue"
+                }
+            ],
+            "serverSideRpc": [
+                {
+                    "method": "setValueAnalogValue-2",
+                    "objectId": "analogValue:2",
+                    "propertyId": "presentValue",
+                    "requestType": "writeProperty",
+                    "requestTimeout": 10000
+                },
+                {
+                    "method": "setValueAnalogValue-1",
+                    "objectId": "analogValue:1",
+                    "propertyId": "presentValue",
+                    "requestType": "writeProperty",
+                    "requestTimeout": 10000
+                },
+                {
+                    "method": "setValueAnalogValue-4",
+                    "objectId": "analogValue:4",
+                    "propertyId": "presentValue",
+                    "requestType": "writeProperty",
+                    "requestTimeout": 10000
+                },
+                {
+                    "method": "setValueAnalogValue-3",
+                    "objectId": "analogValue:3",
+                    "propertyId": "presentValue",
+                    "requestType": "writeProperty",
+                    "requestTimeout": 10000
+                },
+                {
+                    "method": "setValueAnalogValue-32",
+                    "objectId": "analogValue:32",
+                    "propertyId": "presentValue",
+                    "requestType": "writeProperty",
+                    "requestTimeout": 10000
+                }
+            ]
+        }
+    ]
+}

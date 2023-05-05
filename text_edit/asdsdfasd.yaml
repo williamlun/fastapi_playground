@@ -1,0 +1,36 @@
+connectors:
+- configuration: mqtt.json
+  name: MQTT Broker Connector
+  type: mqtt
+- configuration: bacnet.json
+  name: BACnet Connector
+  type: bacnet
+grpc:
+  enabled: false
+  keepalivePermitWithoutCalls: true
+  keepaliveTimeMs: 10000
+  keepaliveTimeoutMs: 5000
+  maxPingsWithoutData: 0
+  minPingIntervalWithoutDataMs: 5000
+  minTimeBetweenPingsMs: 10000
+  serverPort: 9595
+storage:
+  max_record_count: 100000
+  read_records_count: 100
+  type: memory
+thingsboard:
+  checkConnectorsConfigurationInSeconds: 60
+  checkingDeviceActivity:
+    checkDeviceInactivity: false
+    inactivityCheckPeriodSeconds: 10
+    inactivityTimeoutSeconds: 120
+  handleDeviceRenaming: true
+  host: 172.16.14.50
+  minPackSendDelayMS: 0
+  port: 31884
+  qos: 1
+  remoteConfiguration: false
+  remoteShell: false
+  security:
+    accessToken: FpAPjkXp2Wc6DajCraxe
+  statsSendPeriodInSeconds: 3600

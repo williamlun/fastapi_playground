@@ -1,0 +1,1582 @@
+{
+    "broker": {
+        "name": "dev_kube_node_01",
+        "host": "172.16.14.50",
+        "port": 31883,
+        "clientId": "dev_kube_node_01-MQTT-CLIENT",
+        "security": {
+            "type": "basic",
+            "username": "ataladmin",
+            "password": "381rm1hOvGFfe8"
+        },
+        "maxMessageNumberPerWorker": 10,
+        "maxNumberOfWorkers": 100
+    },
+    "mapping": [
+        {
+            "topicFilter": "application/63/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "aqi",
+                        "value": "${object.aqi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "co2",
+                        "value": "${object.co2}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "temperature",
+                        "value": "${object.temperature}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "relativeHumidity",
+                        "value": "${object.relativeHumidity}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "gas1",
+                        "value": "${object.gas1}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "gas2",
+                        "value": "${object.gas2}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "hcho",
+                        "value": "${object.hcho}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "co",
+                        "value": "${object.co}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "tvoc",
+                        "value": "${object.tvoc}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "pm1_0",
+                        "value": "${object.pm1_0}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "pm2_5",
+                        "value": "${object.pm2_5}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "pm10",
+                        "value": "${object.pm10}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/62/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "illuminance",
+                        "value": "${object.illuminance}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "co",
+                        "value": "${object.co}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "co2",
+                        "value": "${object.co2}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "hcho",
+                        "value": "${object.hcho}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "relativeHumidity",
+                        "value": "${object.relativeHumidity}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "hasMotion",
+                        "value": "${object.hasMotion}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "nh3",
+                        "value": "${object.nh3}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "no2",
+                        "value": "${object.no2}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "noiseLevel",
+                        "value": "${object.noiseLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "o3",
+                        "value": "${object.o3}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "pm10",
+                        "value": "${object.pm10}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "pm1_0",
+                        "value": "${object.pm1_0}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "pm2_5",
+                        "value": "${object.pm2_5}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "temperature",
+                        "value": "${object.temperature}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "tvoc",
+                        "value": "${object.tvoc}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/50/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "relativeHumidity",
+                        "value": "${object.relativeHumidity}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "temperature",
+                        "value": "${object.temperature}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/65/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "illuminance",
+                        "value": "${object.illuminance}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "noiseLevel",
+                        "value": "${object.noiseLevel}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "hasMotion",
+                        "value": "${object.hasMotion}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "pm10",
+                        "value": "${object.pm10}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "pm2_5",
+                        "value": "${object.pm2_5}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "pm1_0",
+                        "value": "${object.pm1_0}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "hcho",
+                        "value": "${object.hcho}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "o3",
+                        "value": "${object.o3}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "temperature",
+                        "value": "${object.temperature}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "relativeHumidity",
+                        "value": "${object.relativeHumidity}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "co",
+                        "value": "${object.co}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "tvoc",
+                        "value": "${object.tvoc}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "ch4",
+                        "value": "${object.ch4}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "h2s",
+                        "value": "${object.h2s}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "nh3",
+                        "value": "${object.nh3}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "no2",
+                        "value": "${object.no2}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "so2",
+                        "value": "${object.so2}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "co2",
+                        "value": "${object.co2}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/64/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryPercentage",
+                        "value": "${object.batteryPercentage}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "roomTemperature",
+                        "value": "${object.roomTemperature}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "setTemperature",
+                        "value": "${object.setTemperature}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "coolProportionalOutput",
+                        "value": "${object.coolProportionalOutput}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "fanMode",
+                        "value": "${object.fanMode}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "fanState",
+                        "value": "${object.fanState}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "threshold",
+                        "value": "${object.threshold}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "systemState",
+                        "value": "${object.systemState}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "coolPband",
+                        "value": "${object.coolPband}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "coolItime",
+                        "value": "${object.coolItime}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "kFactor",
+                        "value": "${object.kFactor}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/44/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": []
+            }
+        },
+        {
+            "topicFilter": "application/43/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": []
+            }
+        },
+        {
+            "topicFilter": "application/66/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryPercentage",
+                        "value": "${object.batteryPercentage}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "hasWaterLeak1",
+                        "value": "${object.hasWaterLeak1}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "hasWaterLeak2",
+                        "value": "${object.hasWaterLeak2}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "hasWaterLeak",
+                        "value": "${object.hasWaterLeak}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/53/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "relativeHumidity",
+                        "value": "${object.relativeHumidity}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "temperature",
+                        "value": "${object.temperature}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/52/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "relativeHumidity",
+                        "value": "${object.relativeHumidity}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "temperature",
+                        "value": "${object.temperature}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/57/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "relay1",
+                        "value": "${object.relay1}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "relay2",
+                        "value": "${object.relay2}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "relay3",
+                        "value": "${object.relay3}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "input1",
+                        "value": "${object.input1}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "input2",
+                        "value": "${object.input2}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "input3",
+                        "value": "${object.input3}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/54/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "relativeHumidity",
+                        "value": "${object.relativeHumidity}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "temperature",
+                        "value": "${object.temperature}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/55/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "co2",
+                        "value": "${object.co2}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "temperature",
+                        "value": "${object.temperature}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "relativeHumidity",
+                        "value": "${object.relativeHumidity}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/61/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "isLowBattery",
+                        "value": "${object.isLowBattery}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "hasAlarm",
+                        "value": "${object.hasAlarm}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/51/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "illuminance",
+                        "value": "${object.illuminance}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "temperature",
+                        "value": "${object.temperature}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "isOccupied",
+                        "value": "${object.isOccupied}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "isDisassembled",
+                        "value": "${object.isDisassembled}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/56/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "illuminance",
+                        "value": "${object.illuminance}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/58/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "illuminance",
+                        "value": "${object.illuminance}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/60/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "illuminance",
+                        "value": "${object.illuminance}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/59/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "illuminance",
+                        "value": "${object.illuminance}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/49/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "relativeHumidity",
+                        "value": "${object.relativeHumidity}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "temperature",
+                        "value": "${object.temperature}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/68/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "isAboveLevel",
+                        "value": "${object.isAboveLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/69/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "boolean",
+                        "key": "isAboveLevel",
+                        "value": "${object.isAboveLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    }
+                ]
+            }
+        },
+        {
+            "topicFilter": "application/67/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": []
+            }
+        },
+        {
+            "topicFilter": "application/48/device/+/event/up",
+            "converter": {
+                "type": "json",
+                "deviceNameJsonExpression": "${deviceName}",
+                "deviceNameTopicExpression": null,
+                "deviceTypeJsonExpression": null,
+                "deviceTypeTopicExpression": "${applicationName}",
+                "timeout": 60000,
+                "attributes": [
+                    {
+                        "type": "int",
+                        "key": "applicationID",
+                        "value": "${applicationID}"
+                    },
+                    {
+                        "type": "string",
+                        "key": "deviceID",
+                        "value": "${devEUI}"
+                    }
+                ],
+                "timeseries": [
+                    {
+                        "type": "double",
+                        "key": "rssi",
+                        "value": "${rxInfo[0].rssi}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "loRaSNR",
+                        "value": "${rxInfo[0].loRaSNR}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "batteryLevel",
+                        "value": "${object.batteryLevel}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "relativeHumidity",
+                        "value": "${object.relativeHumidity}"
+                    },
+                    {
+                        "type": "double",
+                        "key": "temperature",
+                        "value": "${object.temperature}"
+                    }
+                ]
+            }
+        }
+    ],
+    "connectRequests": [],
+    "disconnectRequests": [],
+    "attributeRequests": [],
+    "attributeUpdates": [],
+    "serverSideRpc": [
+        {
+            "deviceNameFilter": "AirGuard-LRS10701-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/63/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/63/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Atlasen-AT04-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/62/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/62/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Atlasen-AWD2-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/50/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/50/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Atlasen-LeoV2-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/65/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/65/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Avantec-TA692FC-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/64/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/64/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Manthink-GDO-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/44/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/44/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Manthink-GDO402-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/43/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/43/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Netvox-R311W-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/66/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/66/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Netvox-R711-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/53/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/53/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Netvox-R718AB-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/52/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/52/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Netvox-R831D-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/57/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/57/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Netvox-R9413-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/54/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/54/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Netvox-RA0715-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/55/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/55/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Netvox-RB02I-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/61/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/61/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Netvox-RB11E-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/51/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/51/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "PHSensor-ABC-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/56/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/56/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Semtech-RAK811LoraCtrl-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/58/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/58/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Semtech-RAK811miniCtrl-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/60/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/60/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Semtech-RAK811OTAA-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/59/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/59/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Senso-AirQualitySensor-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/49/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/49/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "STS-R3-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/68/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/68/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "STS-R4-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/69/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/69/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "tester-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/67/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/67/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        },
+        {
+            "deviceNameFilter": "Vishay-AN106-.*",
+            "methodFilter": "downLink",
+            "requestTopicExpression": "application/48/device/${params.devEUI}/command/down",
+            "responseTopicExpression": "application/48/device/${params.devEUI}/event/ack",
+            "responseTimeout": 30000,
+            "valueExpression": "${params}"
+        }
+    ]
+}

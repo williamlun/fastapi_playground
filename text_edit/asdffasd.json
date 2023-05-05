@@ -1,0 +1,56 @@
+{
+    "applicationID": "6",
+    "applicationName": "Suncent-X3",
+    "deviceName": "Suncent-X3-a840417fe186017a",
+    "deviceProfileName": "Suncent-X3",
+    "deviceProfileID": "99a04fd2-c20a-4dfc-8264-4933f128938d",
+    "devEUI": "a840417fe186017a",
+    "rxInfo": [
+        {
+            "gatewayID": "5a53012a0000032c",
+            "uplinkID": "36315d18-fcf0-479e-90e2-5640ddaf5664",
+            "name": "ManThink-GDOx11-5a53012a0000032c",
+            "rssi": -96,
+            "loRaSNR": 12.5,
+            "location": {
+                "latitude": 0,
+                "longitude": 0,
+                "altitude": 0
+            }
+        },
+        {
+            "gatewayID": "5a53012a00000329",
+            "uplinkID": "bee77c0c-c73a-46d0-9248-38dd2b3e3a5a",
+            "name": "ManThink-GDOx11-5a53012a00000329",
+            "rssi": -78,
+            "loRaSNR": 12.8,
+            "location": {
+                "latitude": 0,
+                "longitude": 0,
+                "altitude": 0
+            }
+        }
+    ],
+    "txInfo": {
+        "frequency": 924600000,
+        "dr": 3
+    },
+    "adr": true,
+    "fCnt": 285,
+    "fPort": 2,
+    "data": "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+    "object": {
+        "ao": 0,
+        "date": "2056--1-00",
+        "dayTotalReal": 0,
+        "flow": 0,
+        "monthTotal": 0,
+        "netTotalReal": 0,
+        "quality": 0,
+        "runTime": 0,
+        "runningState": 0,
+        "time": "00:00:00",
+        "velocity": 0,
+        "yearTotal": 0
+    }
+}
