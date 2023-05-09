@@ -13,18 +13,44 @@
             "justMyCode": true
         },
         {
-            "name": "Python: Export Dashboard",
+            "name": "Python: Dashboard export",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceRoot}/Dashboard_export/testing_export.py",
+            "program": "${workspaceRoot}/Dashboard_export/main.py",
             "cwd": "${workspaceRoot}/Dashboard_export",
             "console": "integratedTerminal",
             "env": {
                 "THINGSBOARD_HOST": "172.16.14.50",
                 "THINGSBOARD_USERNAME": "tenant@thingsboard.org",
-                "THINGSBOARD_PASSWORD": "",
+                "THINGSBOARD_PASSWORD": "8NR41mEOzGxcCt",
+                "THINGBOARD_SYSADMIN_USERNAME": "sysadmin@thingsboard.org",
+                "THINGSBOARD_SYSADMIN_PASSWORD": "admin123ex",
+                "FILE_NAME": "dashboard_export.zip"
             },
-            "justMyCode": true
+            "justMyCode": true,
+            "args": [
+                "export"
+            ]
+        },
+        {
+            "name": "Python: Dashboard import",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/Dashboard_export/main.py",
+            "cwd": "${workspaceRoot}/Dashboard_export",
+            "console": "integratedTerminal",
+            "env": {
+                "THINGSBOARD_HOST": "172.16.14.49",
+                "THINGSBOARD_USERNAME": "tenant@thingsboard.org",
+                "THINGSBOARD_PASSWORD": "admin123ex",
+                "THINGBOARD_SYSADMIN_USERNAME": "sysadmin@thingsboard.org",
+                "THINGSBOARD_SYSADMIN_PASSWORD": "admin123ex",
+                "FILE_NAME": "dashboard_export.zip"
+            },
+            "justMyCode": true,
+            "args": [
+                "import"
+            ]
         }
     ]
 }

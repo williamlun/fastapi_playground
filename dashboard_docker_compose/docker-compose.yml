@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  tb-dashboard-import-export:
+    image: dashboard
+    restart: "no"
+    volumes:
+      - ./dashboard:/dashboard
+    #command: [ "/bin/sh", "-c", "poetry run python3 main.py export" ]
+    command: [ "/bin/sh", "-c", "poetry run python3 main.py import" ]
+    environment:
+      THINGBOARD_HOST: "172.16.14.49"
+      THINGBOARD_USERNAME: "tenant@thingsboard.org"
+      THINGSBOARD_PASSWORD: "admin123ex"
+      THINGBOARD_SYSADMIN_USERNAME: "sysadmin@thingsboard.org"
+      THINGSBOARD_SYSADMIN_PASSWORD: "admin123ex"
+      FILE_NAME: "dashboard_export.zip"

@@ -3,10 +3,12 @@ import requests
 import os
 import json
 import zipfile
+from loguru import logger
 
 THINGBOARD_HOST = os.getenv("THINGBOARD_HOST", "172.16.14.50")
 THINGBOARD_USERNAME = os.getenv("THINGBOARD_USERNAME", "tenant@thingsboard.org")
 THINGSBOARD_PASSWORD = os.getenv("THINGSBOARD_PASSWORD", "tenant")
+FILE_NAME = os.getenv("FILE_NAME", "dashboard_export.zip")
 token = ""
 
 default_dashboard = [
@@ -225,7 +227,8 @@ def process_dashboard(id_):
     return dashboard_json
 
 
-def main():
+def export():
+    logger.info("Start export dashboard")
     global token
     token = get_token()
 
@@ -233,13 +236,10 @@ def main():
     dashboard_needed = filter_dashboard(all_dashboard)
     dashboard_ids = extract_dashboard_id(dashboard_needed)
 
-    with zipfile.ZipFile("dashboard_export.zip", "w") as zip_file:
+    with zipfile.ZipFile(f"/dashboard/{FILE_NAME}", "w") as zip_file:
         for id_ in dashboard_ids:
             result = process_dashboard(id_)
             dashboard_name = result["title"]
             data = json.dumps(result, indent=4)
             zip_file.writestr(f"{dashboard_name}.json", data)
-
-
-if __name__ == "__main__":
-    main()
+    logger.info("Finish export dashboard")
