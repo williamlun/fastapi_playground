@@ -2,7 +2,7 @@ version: "3"
 
 services:
   tb-dashboard-import-export:
-    image: dashboard
+    image: atalces/iot-thingsboard-dashboard-migration
     restart: "no"
     volumes:
       - ./dashboard:/dashboard

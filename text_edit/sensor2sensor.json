@@ -1,0 +1,40 @@
+{
+    "SENSOR_to_SENSOR": [
+        {
+            "source_field": "field1",
+            "target_field": "field1",
+            "require_cov": true,
+            "target_devEUI": "7012018a00000001",
+            "target_fPort": 1,
+            "target_profile": "William-test1235",
+            "target_name": "William-test1235-7012018a00000001"
+        },
+        {
+            "source_field": "field2",
+            "target_field": "field2",
+            "require_cov": false,
+            "target_devEUI": "7012018a00000001",
+            "target_fPort": 2,
+            "target_profile": "William-test1235",
+            "target_name": "William-test1235-7012018a00000001"
+        },
+        {
+            "source_field": "field2",
+            "target_field": "field3",
+            "require_cov": true,
+            "target_devEUI": "7012018a00000001",
+            "target_fPort": 3,
+            "target_profile": "William-test1235",
+            "target_name": "William-test1235-7012018a00000001"
+        },
+        {
+            "source_field": "field1",
+            "target_field": "BinaryValue-1",
+            "require_cov": false,
+            "target_devEUI": "BACnet-KLL-172-26-13-109-47808",
+            "target_fPort": 3,
+            "target_profile": "default",
+            "target_name": "BACnet-KLL-172-26-13-109-47808"
+        }
+    ]
+}

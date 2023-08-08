@@ -185,7 +185,10 @@ def signle_entity_handler(signle_entity: dict):
         "CURRENT_USER",
     ]
     if entity_type in handle_list:
-        return {entity_id: _entity_handler(entity_type, entity_id)}
+        try:
+            return {entity_id: _entity_handler(entity_type, entity_id)}
+        except:
+            return {}
     return {}
 
 
@@ -216,10 +219,13 @@ def create_aliases_mapping(alias: dict):
 
 def process_dashboard(id_):
     dashboard_json = get_dashboard_json(id_)
-    entity_aliases = dashboard_json["configuration"]["entityAliases"]
-    mappings = {}
-    for alias in entity_aliases.values():
-        mappings.update(create_aliases_mapping(alias))
+    try:
+        entity_aliases = dashboard_json["configuration"]["entityAliases"]
+        mappings = {}
+        for alias in entity_aliases.values():
+            mappings.update(create_aliases_mapping(alias))
+    except:
+        mappings = {}
     dashboard_json["mapping"] = mappings
     dashboard_json.pop("id")
     dashboard_json.pop("createdTime")

@@ -1,0 +1,335 @@
+[
+    {
+        "id": "2a788d9e-ea2b-52f1-9804-4ef5c82b6b80",
+        "path": "/ChPlt/cooling_load",
+        "data_type": "float",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "6a79b597-1cef-5717-80cd-b7cf7899b756",
+        "path": "/ChPlt/outdoor_wbtemp",
+        "data_type": "float",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "6c3b26f2-b4f7-5a96-b791-5ee7e69396cf",
+        "path": "/ChPlt/cdws_temp",
+        "data_type": "float",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "64e4e8bb-d221-5203-8866-24b40c5f6849",
+        "path": "/Ch_1/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "b7a77b88-fdb8-5fb8-9004-adaa6b72d7f3",
+        "path": "/Ch_2/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "6949c253-7fba-563d-b3cc-e057d41ac229",
+        "path": "/Ch_3/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "15436084-3898-5e4d-b3d1-d9c421506de4",
+        "path": "/Ch_4/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "2613a55f-8fc6-5bf4-9be3-4a5500407212",
+        "path": "/Ch_5/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "55a85b68-f150-56a7-a644-2763b918d359",
+        "path": "/Ch_1/chws_temp_set_point",
+        "data_type": "float",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "17108a8a-8a86-5927-afe0-b65c2fec1391",
+        "path": "/Ch_2/chws_temp_set_point",
+        "data_type": "float",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "c9882eba-f0d5-59b7-8821-1410081bdc5e",
+        "path": "/Ch_3/chws_temp_set_point",
+        "data_type": "float",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "fc89c9b6-954c-590f-ae27-9d49004f1fcb",
+        "path": "/Ch_4/chws_temp_set_point",
+        "data_type": "float",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "343e2b7b-3177-5498-b617-edb57865e781",
+        "path": "/Ch_5/chws_temp_set_point",
+        "data_type": "float",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "05540ac6-51cf-5544-b76e-f79ee92c24f0",
+        "path": "/CT_1/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "22986055-7f5e-5618-ae2f-4ddda464b14d",
+        "path": "/CT_2/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "b1d495a8-1a65-5b63-bf7b-7209146700e0",
+        "path": "/CT_3/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "83433219-84f6-50cd-8d8c-3df983eca9ce",
+        "path": "/CT_4/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "416019c8-c993-52d7-9531-cb712160ecc7",
+        "path": "/CT_1/fan_on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "7f47a933-2f99-59e3-b2ff-da5fcd782895",
+        "path": "/CT_2/fan_on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "8eb6c070-1854-5e4a-a84c-eb45c6e4e8d6",
+        "path": "/CT_3/fan_on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "a7586677-243b-55ea-aed4-4542c8d3337f",
+        "path": "/CT_4/fan_on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "2c7b427e-0b2f-564a-b055-0c3e4a480e6d",
+        "path": "/ChWP_1/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "4802b403-1468-51f8-9aae-3432f5b45136",
+        "path": "/ChWP_2/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "4cbac419-617d-5d52-ab3f-9492a74355f8",
+        "path": "/ChWP_3/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "63b942f8-b318-5b3a-ba4a-4f5412b70a7c",
+        "path": "/ChWP_4/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "e9d2d386-440e-5b09-81d7-939e205a19b8",
+        "path": "/ChWP_5/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "0052cf49-2f9a-5f6c-bc43-64ae34c1b493",
+        "path": "/ChWP_6/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "b3f98db9-f701-5ef4-85ee-2519695a5cd4",
+        "path": "/ChWP_7/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "f541b3d7-39c9-5070-89b0-562bc16efe03",
+        "path": "/ChWP_8/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "586a950c-ef5e-53ec-8f77-d82f69f274d9",
+        "path": "/CDWP_1/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "5db63807-d875-536e-ae78-604726307d6e",
+        "path": "/CDWP_2/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "f0ca9946-a84f-5b3b-8ca2-027e1df6c093",
+        "path": "/CDWP_3/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "15ead006-2f9c-56e6-b1c9-d1420868f7af",
+        "path": "/CDWP_4/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "6caf4121-fe2f-5345-8fef-78eab19de459",
+        "path": "/CDWP_5/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "34360e81-d8eb-5660-9e70-a25f3870b83c",
+        "path": "/CDWP_6/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "c17d956a-3f03-56c2-a367-958a6f8dea0e",
+        "path": "/CDWP_7/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    },
+    {
+        "id": "9aef7cd0-78a0-5f22-a3f4-d4f80fba78e3",
+        "path": "/CDWP_8/on_off",
+        "data_type": "boolean",
+        "unit": "",
+        "status": "good",
+        "is_writable": true,
+        "is_forcible": true
+    }
+]

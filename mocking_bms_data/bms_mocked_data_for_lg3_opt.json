@@ -1,0 +1,150 @@
+[
+    {
+        "standard_name": "ChPlt.cooling_load",
+        "value": 1520.0
+    },
+    {
+        "standard_name": "ChPlt.outdoor_wbtemp",
+        "value": 22.5
+    },
+    {
+        "standard_name": "ChPlt.cdws_temp",
+        "value": 28.8
+    },
+    {
+        "standard_name": "Ch_1.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "Ch_2.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "Ch_3.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "Ch_4.on_off",
+        "value": true
+    },
+    {
+        "standard_name": "Ch_5.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "Ch_1.chws_temp_set_point",
+        "value": 7.0
+    },
+    {
+        "standard_name": "Ch_2.chws_temp_set_point",
+        "value": 7.0
+    },
+    {
+        "standard_name": "Ch_3.chws_temp_set_point",
+        "value": 7.0
+    },
+    {
+        "standard_name": "Ch_4.chws_temp_set_point",
+        "value": 8.5
+    },
+    {
+        "standard_name": "Ch_5.chws_temp_set_point",
+        "value": 7.0
+    },
+    {
+        "standard_name": "CT_1.on_off",
+        "value": true
+    },
+    {
+        "standard_name": "CT_2.on_off",
+        "value": true
+    },
+    {
+        "standard_name": "CT_3.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "CT_4.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "CT_1.fan_on_off",
+        "value": true
+    },
+    {
+        "standard_name": "CT_2.fan_on_off",
+        "value": true
+    },
+    {
+        "standard_name": "CT_3.fan_on_off",
+        "value": false
+    },
+    {
+        "standard_name": "CT_4.fan_on_off",
+        "value": false
+    },
+    {
+        "standard_name": "ChWP_1.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "ChWP_2.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "ChWP_3.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "ChWP_4.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "ChWP_5.on_off",
+        "value": true
+    },
+    {
+        "standard_name": "ChWP_6.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "ChWP_7.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "ChWP_8.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "CDWP_1.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "CDWP_2.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "CDWP_3.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "CDWP_4.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "CDWP_5.on_off",
+        "value": true
+    },
+    {
+        "standard_name": "CDWP_6.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "CDWP_7.on_off",
+        "value": false
+    },
+    {
+        "standard_name": "CDWP_8.on_off",
+        "value": false
+    }
+]

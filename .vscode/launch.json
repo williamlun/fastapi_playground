@@ -22,9 +22,9 @@
             "env": {
                 "THINGSBOARD_HOST": "172.16.14.50",
                 "THINGSBOARD_USERNAME": "tenant@thingsboard.org",
-                "THINGSBOARD_PASSWORD": "admin123ex",
+                "THINGSBOARD_PASSWORD": "8NR41mEOzGxcCt",
                 "THINGBOARD_SYSADMIN_USERNAME": "sysadmin@thingsboard.org",
-                "THINGSBOARD_SYSADMIN_PASSWORD": "admin123ex",
+                "THINGSBOARD_SYSADMIN_PASSWORD": "8NR41mEOzGxcCt",
                 "FILE_NAME": "dashboard_export.zip"
             },
             "justMyCode": true,

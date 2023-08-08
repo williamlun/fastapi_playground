@@ -1,0 +1,128 @@
+{
+    "id": "5b516638-d0c5-430d-ae3b-12fe689458d2",
+    "alarmType": "CRITICAL_REPEATING_GT_illuminance",
+    "createRules": {
+        "CRITICAL": {
+            "condition": {
+                "condition": [
+                    {
+                        "key": {
+                            "type": "TIME_SERIES",
+                            "key": "illuminance"
+                        },
+                        "valueType": "NUMERIC",
+                        "value": null,
+                        "predicate": {
+                            "type": "NUMERIC",
+                            "operation": "GREATER",
+                            "value": {
+                                "defaultValue": 0,
+                                "userValue": null,
+                                "dynamicValue": {
+                                    "sourceType": "CURRENT_DEVICE",
+                                    "sourceAttribute": "CRITICAL_REPEATING_GT_illuminance_THRESHOLD",
+                                    "inherit": false
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "key": {
+                            "type": "ATTRIBUTE",
+                            "key": "CRITICAL_REPEATING_GT_illuminance_ENABLED"
+                        },
+                        "valueType": "BOOLEAN",
+                        "value": null,
+                        "predicate": {
+                            "type": "BOOLEAN",
+                            "operation": "EQUAL",
+                            "value": {
+                                "defaultValue": true,
+                                "userValue": null,
+                                "dynamicValue": null
+                            }
+                        }
+                    }
+                ],
+                "spec": {
+                    "type": "REPEATING",
+                    "predicate": {
+                        "defaultValue": 3,
+                        "userValue": null,
+                        "dynamicValue": {
+                            "sourceType": "CURRENT_DEVICE",
+                            "sourceAttribute": "CRITICAL_REPEATING_GT_illuminance_REPEATING",
+                            "inherit": false
+                        }
+                    }
+                }
+            },
+            "schedule": null,
+            "alarmDetails": null,
+            "dashboardId": null
+        }
+    },
+    "clearRule": {
+        "condition": {
+            "condition": [
+                {
+                    "key": {
+                        "type": "TIME_SERIES",
+                        "key": "illuminance"
+                    },
+                    "valueType": "NUMERIC",
+                    "value": null,
+                    "predicate": {
+                        "type": "NUMERIC",
+                        "operation": "LESS",
+                        "value": {
+                            "defaultValue": 0,
+                            "userValue": null,
+                            "dynamicValue": {
+                                "sourceType": "CURRENT_DEVICE",
+                                "sourceAttribute": "CRITICAL_REPEATING_GT_illuminance_THRESHOLD",
+                                "inherit": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "key": {
+                        "type": "ATTRIBUTE",
+                        "key": "CRITICAL_REPEATING_GT_illuminance_ENABLED"
+                    },
+                    "valueType": "BOOLEAN",
+                    "value": null,
+                    "predicate": {
+                        "type": "BOOLEAN",
+                        "operation": "EQUAL",
+                        "value": {
+                            "defaultValue": true,
+                            "userValue": null,
+                            "dynamicValue": null
+                        }
+                    }
+                }
+            ],
+            "spec": {
+                "type": "REPEATING",
+                "predicate": {
+                    "defaultValue": 3,
+                    "userValue": null,
+                    "dynamicValue": {
+                        "sourceType": "CURRENT_DEVICE",
+                        "sourceAttribute": "CRITICAL_REPEATING_GT_illuminance_REPEATING",
+                        "inherit": false
+                    }
+                }
+            }
+        },
+        "schedule": null,
+        "alarmDetails": null,
+        "dashboardId": null
+    },
+    "propagate": false,
+    "propagateToOwner": false,
+    "propagateToTenant": false,
+    "propagateRelationTypes": null
+}

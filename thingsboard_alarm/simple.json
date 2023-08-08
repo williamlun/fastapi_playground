@@ -1,0 +1,146 @@
+{
+    "id": "dae42430-afde-42e5-a40b-696ada5daae5",
+    "alarmType": "CRITICAL_SIMPLE_GT_temperature",
+    "createRules": {
+        "CRITICAL": {
+            "condition": {
+                "condition": [
+                    {
+                        "key": {
+                            "type": "TIME_SERIES",
+                            "key": "temperature"
+                        },
+                        "valueType": "NUMERIC",
+                        "value": null,
+                        "predicate": {
+                            "type": "NUMERIC",
+                            "operation": "GREATER",
+                            "value": {
+                                "defaultValue": 0,
+                                "userValue": null,
+                                "dynamicValue": {
+                                    "sourceType": "CURRENT_DEVICE",
+                                    "sourceAttribute": "CRITICAL_SIMPLE_GT_temperature_THRESHOLD",
+                                    "inherit": false
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "key": {
+                            "type": "ATTRIBUTE",
+                            "key": "CRITICAL_SIMPLE_GT_temperature_ENABLED"
+                        },
+                        "valueType": "BOOLEAN",
+                        "value": null,
+                        "predicate": {
+                            "type": "BOOLEAN",
+                            "operation": "EQUAL",
+                            "value": {
+                                "defaultValue": true,
+                                "userValue": null,
+                                "dynamicValue": null
+                            }
+                        }
+                    },
+                    {
+                        "key": {
+                            "type": "ATTRIBUTE",
+                            "key": "displayName"
+                        },
+                        "valueType": "STRING",
+                        "value": null,
+                        "predicate": {
+                            "type": "STRING",
+                            "operation": "NOT_EQUAL",
+                            "value": {
+                                "defaultValue": "|",
+                                "userValue": null,
+                                "dynamicValue": null
+                            },
+                            "ignoreCase": false
+                        }
+                    }
+                ],
+                "spec": {
+                    "type": "SIMPLE"
+                }
+            },
+            "schedule": null,
+            "alarmDetails": "alarm from ${displayName}.",
+            "dashboardId": null
+        }
+    },
+    "clearRule": {
+        "condition": {
+            "condition": [
+                {
+                    "key": {
+                        "type": "TIME_SERIES",
+                        "key": "temperature"
+                    },
+                    "valueType": "NUMERIC",
+                    "value": null,
+                    "predicate": {
+                        "type": "NUMERIC",
+                        "operation": "LESS",
+                        "value": {
+                            "defaultValue": 0,
+                            "userValue": null,
+                            "dynamicValue": {
+                                "sourceType": "CURRENT_DEVICE",
+                                "sourceAttribute": "CRITICAL_SIMPLE_GT_temperature_THRESHOLD",
+                                "inherit": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "key": {
+                        "type": "ATTRIBUTE",
+                        "key": "CRITICAL_SIMPLE_GT_temperature_ENABLED"
+                    },
+                    "valueType": "BOOLEAN",
+                    "value": null,
+                    "predicate": {
+                        "type": "BOOLEAN",
+                        "operation": "EQUAL",
+                        "value": {
+                            "defaultValue": true,
+                            "userValue": null,
+                            "dynamicValue": null
+                        }
+                    }
+                },
+                {
+                    "key": {
+                        "type": "ATTRIBUTE",
+                        "key": "displayName"
+                    },
+                    "valueType": "STRING",
+                    "value": null,
+                    "predicate": {
+                        "type": "STRING",
+                        "operation": "NOT_EQUAL",
+                        "value": {
+                            "defaultValue": "|",
+                            "userValue": null,
+                            "dynamicValue": null
+                        },
+                        "ignoreCase": false
+                    }
+                }
+            ],
+            "spec": {
+                "type": "SIMPLE"
+            }
+        },
+        "schedule": null,
+        "alarmDetails": "alarm from ${displayName} cleared",
+        "dashboardId": null
+    },
+    "propagate": false,
+    "propagateToOwner": false,
+    "propagateToTenant": false,
+    "propagateRelationTypes": null
+}

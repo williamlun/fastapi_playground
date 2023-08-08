@@ -9,8 +9,9 @@ from loguru import logger
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
-    client.subscribe("application/64/#")
-    # client.subscribe("application/18/#")
+    # client.subscribe("ataldev/#")
+    client.subscribe("application/#")
+    # client.subscribe("#")
 
 
 def on_message(client, userdata, message):
@@ -20,6 +21,8 @@ def on_message(client, userdata, message):
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
+# client.username_pw_set("admin", "admin123in")
+# client.connect("172.16.14.49", 31883, 60)
 client.username_pw_set("ataladmin", "381rm1hOvGFfe8")
 client.connect("172.16.14.50", 31883, 60)
 
