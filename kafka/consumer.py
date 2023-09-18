@@ -3,7 +3,7 @@ from confluent_kafka import Consumer
 from loguru import logger
 
 TOPIC = "^*"
-GROUP_ID = "monitor"
+GROUP_ID = "bms-data-service"
 
 
 def init_kafka():
@@ -19,7 +19,7 @@ def init_kafka():
             "sasl.password": "",
         }
     )
-    consumer.subscribe(["^.*-bms-service-point-value"])
+    consumer.subscribe(["^.*-bms-service-bms-data"])
     return consumer
 
 
