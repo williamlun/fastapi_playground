@@ -1,0 +1,880 @@
+module.on_prem.module.alarm_service.argocd_application.helm
+module.on_prem.module.alarm_service.null_resource.apply_alarm_svc_config
+
+module.on_prem.module.asset_management_service.argocd_application.helm
+module.on_prem.module.asset_management_service.helm_release.neo4j_graphdb
+module.on_prem.module.asset_management_service.null_resource.apply_asset_mgmt_svc_config
+
+module.on_prem.module.chirpstack.helm_release.chirpstack
+module.on_prem.module.chirpstack.helm_release.mosquitto
+module.on_prem.module.chirpstack.helm_release.postgresql
+module.on_prem.module.chirpstack.helm_release.redis
+module.on_prem.module.chirpstack.kubernetes_config_map.postgres_initdb
+
+module.on_prem.module.data_service.argocd_application.helm
+module.on_prem.module.data_service.helm_release.data_svc_timescaledb
+module.on_prem.module.data_service.kubernetes_secret.data_svc_timescale_post_init_pw
+module.on_prem.module.data_service.null_resource.apply_data_svc_config
+
+module.on_prem.module.docker_registry_cloud.kubernetes_secret.docker_registry
+module.on_prem.module.docker_registry_site.kubernetes_secret.docker_registry
+
+module.on_prem.module.iot-cms-react.argocd_application.helm
+module.on_prem.module.iot-cms-react.null_resource.apply_iot_cms_react_svc_config
+
+module.on_prem.module.iot-cms-webserver.argocd_application.helm
+module.on_prem.module.iot-cms-webserver.kubernetes_secret.iot_cms_webserver_basicauth
+module.on_prem.module.iot-cms-webserver.null_resource.apply_iot_cms_webservser_config
+
+module.on_prem.module.iot_stateful_msg_svc.argocd_application.helm
+
+module.on_prem.module.thingsboard.helm_release.thingsboard
+module.on_prem.module.thingsboard.null_resource.apply_thingsboard_config
+module.on_prem.module.thingsboard-oauth-integration.null_resource.init_thingsboard_oauth
+
+from msilib.schema import ServiceControl
+
+
+Get authorization code with
+state=12345678
+client_id=demo_service
+redirect_uri=http://127.0.0.1:8077/redirect
+
+http://127.0.0.1:8077/authorize?state=12345678&client_id=demo_service&redirect_uri=http://127.0.0.1:8077/redirect
+
+
+{
+  "attributes": {},8
+  "scopes": [
+    {
+      "id": "b08f4c21-e33e-4994-a4ba-b00453af7f9f",
+      "name": "read",
+      "iconUri": ""
+    }
+  ],
+  "name": "site_a_room102",
+  "type": "site_a",
+  "icon_uri": "",
+  "ownerManagedAccess": false
+}
+
+/testing/tseting2/testing3site_a_room101
+
+data
+data:historical
+data:real-time
+
+alarm
+alarm:read
+alarm:ack
+alarm:del
+
+BACnet
+BACnet:read
+
+def is_resource_included_in_resource_path(resource: str, resource_path: str) -> bool:
+    if resource_path.endswith("*"):
+        return resource.startswith(resource_path[:-1])
+    else:
+        return resource == resource_path
+
+
+        """cache the searching result to boost performance"""
+from typing import Optional
+
+import internal_schema
+import json
+
+
+class Cache:
+    """Cache class for stores"""
+
+    _instance = Optional["Cache"] = None
+
+    def __init__(self):
+        if Cache._instance is not None:
+            raise Exception("This class is a singleton!")
+
+        Cache._instance = self
+
+    @staticmethod
+    def get_instance():
+        if Cache._instance is None:
+            raise Exception("Cache is not initialized!")
+        return Cache._instance
+''
+MATCH (n:Device {name: "Netvox-R831D-7012018a559517ea"}) RETURN id(n) AS node_id
+
+
+
+MATCH (s:Site)<-[:hasLocation]-(d:Device{device_props})-[:hasPoint]->(f:Field)
+
+RETURN d.id AS id, d.name AS name, d.displayName AS displayName,
+
+s.id AS siteId, collect(f.name) AS fields
+
+Netvox-R831D-7012018a559517ea
+
+
+MATCH (d:Device) WHERE d.name CONTAINS '{name}'
+MATCH (d)-[:hasPoint]->(f:Field) 
+MATCH (d)-[:hasLocation]->(s:Site{site_props})
+MATCH (d)-[:hasGroup]->(g: Group) 
+RETURN  d.id AS id, d.name AS name, d.displayName AS displayName, 
+collect(f.name) AS fields, 
+s.id AS siteId,
+g.name AS group
+
+
+
+
+match (n) where n.id = '5ac4f2ab-448a-5171-a3aa-e31f088a8c0e' 
+
+
+f"MATCH (s:Site)<-[:hasLocation]-(d:Device{device_props})-[:hasPoint]->(f:Field)"
+            " RETURN d.id AS id, d.name AS name, d.displayName AS displayName,"
+            " s.id AS siteId, collect(f.name) AS fields"
+
+MATCH (d:Device {id : '5ac4f2ab-448a-5171-a3aa-e31f088a8c0e'})
+MATCH (d)-[:hasLocation]->(s:Site)
+MATCH (d)-[:hasGroup]->(g: Group) 
+MATCH (d)-[:hasPoint]->(f:Field) 
+RETURN  d.id AS id, d.name AS name, d.displayName AS displayName, 
+collect(f.name) AS fields, 
+s.id AS siteId,
+g.name AS group
+
+MATCH (d:Device{device_props})
+MATCH (d)-[:hasLocation]->(s:Site)
+MATCH (d)-[:hasGroup]->(g: Group) 
+MATCH (d)-[:hasPoint]->(f:Field) 
+RETURN  d.id AS id, d.name AS name, d.displayName AS displayName, 
+collect(f.name) AS fields, 
+s.id AS siteId,
+g.name AS group
+
+
+
+CREATE (t: Tenant {name: 'ATAL', displayName: 'ATAL', id:'6c146fd1-6a52-421b-aad0-50b1f6c4ffa8'})
+
+MATCH
+  (t:Tenant ),
+  (s: Site)
+WHERE t.name = 'ATAL' AND s.name = 'ATALDEV'
+CREATE (s)-[r:isSiteOf]->(t)
+RETURN t,s
+
+
+
+MATCH (s:Site)-[:isSiteOf]->(t:Tenant) WHERE s.name CONTAINS "ATALDEV" 
+RETURN s.id AS id, s.name AS name, s.displayName AS displayName, t.id AS tenantId
+
+
+
+http://127.0.0.1:8000/authorize?client_id=3&state=24&redirect_uri=http://0.0.0.0:8001
+
+Yesterday
+  1. ITP-311 Edit asset management endpoint, let data-service able to get device droup infomation
+Today
+  1. ITP-312 Add authorization check in data-service
+
+
+Netvox-R831D-7012018a559501f4
+
+INSERT INTO device(name)
+  VALUES ('Netvox-R831D-7012018a559501f4');
+
+
+INSERT INTO telemetry_data(timestamp,device_id, key,value)
+  VALUES ('2022-11-24T07:33:50+00:00',1,'co2',23);
+
+  
+
+
+521762af-cd2d-488d-9ed7-842616874ad6.48bdb4c4-ecd4-46a2-8623-4274cd405d71.de31d77f-1eaa-4d2f-8e8f-548317502d10
+
+
+data-entrance/merge_import/src/templates/alarms_rule/device_profile_fields.yaml
+
+Yesterday
+
+Study trarfik loadbalancer for microservices version thingboard. (ITP-327)
+Today
+
+Stud notification Service design and documentation. (ITP-330)
+
+docker run -it -e host=172.16.12.207 -e port=30909 -e accessToken=ACCESS_TOKEN -v ~/.tb-gateway/logs:/thingsboard_gateway/logs -v ~/.tb-gateway/extensions:/thingsboard_gateway/extensions -v ~/.tb-gateway/config:/thingsboard_gateway/config --name tb-gateway --restart always thingsboard/tb-gateway
+
+38f1f61bab66d2f2dbea979705f714b9
+
+asset-management-service-iot-asset-management-service.iot-cloud-services/
+asset-mgmt-service/api/v1
+/api/v1/sites
+
+
+curl -X GET asset-management-service-iot-asset-management-service.iot-cloud-services/asset-mgmt-service/api/v1/sites
+
+curl -X GET http://asset-management-service-iot-asset-management-service.iot-cloud-services/asset-mgmt-service/api/v1/sites
+
+1674205274
+1674205598
+
+
+env:                                                                                                                                                                            │
+│     - name: THINGSBOARD_HOST                                                                                                                                                        │
+│       value: tb-postgres.iot-cloud-thingsboard                                                                                                                                      │
+│     - name: THINGSBOARD_PORT                                                                                                                                                        │
+│       value: "9090"                                                                                                                                                                 │
+│     - name: THINGSBOARD_MQTT_PORT                                                                                                                                                   │
+│       value: "1883"                                                                                                                                                                 │
+│     - name: THINGSBOARD_USERNAME                                                                                                                                                    │
+│       value: tenant@thingsboard.org                                                                                                                                                 │
+│     - name: THINGSBOARD_PASSWORD                                                                                                                                                    │
+│       value: tenant                                                                                                                                                                 │
+│     - name: THINGSBOARD_SYSADMIN_USERNAME                                                                                                                                           │
+│     - name: THINGSBOARD_SYSADMIN_PASSWORD                                                                                                                                           │
+│     - name: CHIRPSTACK_HOST                                                                                                                                                         │
+│       value: chirpstack-as.iot-site-chirpstack                                                                                                                                      │
+│     - name: CHIRPSTACK_PORT                                                                                                                                                         │
+│       value: "8080"                                                                                                                                                                 │
+│     - name: CHIRPSTACK_USERNAME                                                                                                                                                     │
+│       value: admin                                                                                                                                                                  │
+│     - name: CHIRPSTACK_PASSWORD                                                                                                                                                     │
+│       value: admin                                                                                                                                                                  │
+│     - name: CHIRPSTACK_MQTT_PORT                                                                                                                                                    │
+│       value: "1883"                                                                                                                                                                 │
+│     - name: CHIRPSTACK_MQTT_USERNAME                                                                                                                                                │
+│       value: admin                                                                                                                                                                  │
+│     - name: CHIRPSTACK_MQTT_PASSWORD                                                                                                                                                │
+│       value: admin                                                                                                                                                                  │
+│     - name: CHIRPSTACK_NETWORK_SERVER_HOST                                                                                                                                          │
+│       value: chirpstack-ns                                                                                                                                                          │
+│     - name: NEO4J_HOST                                                                                                                                                              │
+│       value: neo4j.iot-cloud-services                                                                                                                                               │
+│     - name: NEO4J_PORT                                                                                                                                                              │
+│       value: "7687"                                                                                                                                                                 │
+│     - name: NEO4J_USERNAME                                                                                                                                                          │
+│       value: neo4j
+
+
+3rd-party
+
+nF3lqEM1dExlyfr1UChRRulksMPxePVb
+
+Netvox-RB11E-7012018A55950001
+
+temperature
+
+2023-01-31T01:34:06.668243+00:00
+
+chmod 600 prod_production_log_vm.pub
+/Users/williamleung/Downloads/prod_production_log_vm.pub
+
+ssh -i /Users/williamleung/Downloads/prod_production_log_vm.pub ataladmin@172.16.12.222
+
+
+
+Resolve ITP-419 "update-keycloak-path-for-external-access"
+ just now
+/authorize
+Authorization Code Flow Endpoint
+
+https://172.16.12.207/data-service/authorize?state=12345678&client_id=3rd-party&redirect_uri=http://127.0.0.1:8077/redirect
+
+http://172.16.12.207:30800/authorize?state=12345678&client_id=3rd-party&redirect_uri=http://127.0.0.1:8077/redirect
+
+http://127.0.0.1:8077/redirect
+
+12345678
+
+data-service
+
+3rd-party
+
+nF3lqEM1dExlyfr1UChRRulksMPxePVb
+
+https://172.16.12.207/auth/realms/ataldev/protocol/openid-connect/auth
+
+Netvox-RB11E-7012018A55950001
+illuminance
+
+
+
+
+GET
+/authorize
+Authorization Code Flow Endpoint
+
+ resource_content: name='site_a/*' owner=Owner(id='3a5aa1ef-4a34-4fff-8c9b-807b2bf1ffe9') attributes={} uris=['site_a/ │
+│ 2023-02-03 07:34:09.760 | INFO     | keycloak.authentication:_check_permission:141 - headers: {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJEOXEzdmxoVGhNODBHNE1tNC1mZ1Ix │
+│ 2023-02-03 07:34:09.760 | INFO     | keycloak.authentication:_check_permission:143 - url: http://keycloak.iot-cloud-services:80/realms/ataldev/protocol/openid-connect/token                             │
+│ 2023-02-03 07:34:09.760 | INFO     | keycloak.authentication:_check_permission:150 - payload: audience=data-service&grant_type=urn:ietf:params:oauth:grant-type:uma-ticket&response_mode=decision&permis │
+│ 2023-02-03 07:34:09.765 | ERROR    | main:authentication_error_handler:38 - {"error":"invalid_grant","error_description":"Invalid bearer token"}                                                         │
+│ INFO:     172.16.12.207:39017 - "GET /api/v1/devices/Netvox-RB11E-7012018A55950001/real-time-sensor-data?k
+
+audience=data-service&
+grant_type=urn:ietf:params:oauth:grant-type:uma-ticket&
+response_mode=decision&
+permission=site_a/*#data:realtime:read
+
+
+payload: audience=data-service&grant_type=urn:ietf:params:oauth:grant-type:uma-ticket&response_mode=decision&permission=site_a/*#data:realtime:read
+payload: audience=data-service&grant_type=urn:ietf:params:oauth:grant-type:uma-ticket&response_mode=decision&permission=site_a/*#data:realtime:read
+
+headers: {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJEOXEzdmxoVGhNODBHNE1tNC1mZ1IxX0liYU9IYTRuQlJCWHZBR2xURE5zIn0.eyJleHAiOjE2NzU0MTAzOTEsImlhdCI6MTY3NTQxMDA5MSwiYXV0aF90aW1lIjoxNjc1NDA5MjM1LCJqdGkiOiJhMjQxNWM2OC1iNmRmLTQwMDQtOGU4NS0zZWMwZWJlMDY0MmMiLCJpc3MiOiJodHRwczovLzE3Mi4xNi4xMi4yMDcvYXV0aC9yZWFsbXMvYXRhbGRldiIsImF1ZCI6WyJncmFmYW5hIiwiYWNjb3VudCJdLCJzdWIiOiJkMmQ1OGY5NS02NDU5LTRjZWUtOWI0Ny1hNjgwYzdkNzFiMWMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiIzcmQtcGFydHkiLCJzZXNzaW9uX3N0YXRlIjoiZGFkZDBmZDAtNTE0NC00MmFiLWIyZTgtNjFmMmNkODRiZWE4IiwiYWNyIjoiMCIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1hdGFsZGV2Il19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiZ3JhZmFuYSI6eyJyb2xlcyI6WyJhZG1pbiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiZGFkZDBmZDAtNTE0NC00MmFiLWIyZTgtNjFmMmNkODRiZWE4IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInByZWZlcnJlZF91c2VybmFtZSI6ImF0YWwiLCJnaXZlbl9uYW1lIjoiIiwiZmFtaWx5X25hbWUiOiIiLCJlbWFpbCI6ImF0YWxAdGIuY29tIn0.mT7TVaKcsnNxrtpATe_BTUsInX3uF7i8fUKXduXxkf51bdRzbwcrmdC36lQhCGuhqDVkzaeXA2G7S8G1uRZ1Ip2YqkjAsN8p0daE9s8PfKgVAH6ReJlZL8wAVYsA-TKQds-0jMWoTXwsItek6D1rNpM4C-PqMU86ceALauTmK5VpNPzfCMsl4PaAdHnJ5VUioeky52UBisa-WGtbQOH_1ZPK8-Tx0vgFsTcXRqRUPZ7FpPq_9VJ0gfAiRQ38XWI3mIwYBy8qtrjCnhZoHTx4LdnTjOdQXaIIP4_LMAKEnV8EqQFBScFuQqtUAsOLfOfsNxL8cT6vVsj80Fu8unHmQA', 'Content-Type': 'application/x-www-form-urlencoded'}
+headers: {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2l
+
+
+
+http://keycloak.iot-cloud-services/realms/ataldev/protocol/openid-connect/token
+
+
+
+http://keycloak.iot-cloud-services/realms/ataldev/protocol/openid-connect/certs
+
+
+
+
+Duration
+device->attribute, time unit all s or m
+
+Repeating
+device-> attribute 1-2147483647
+ 
+
+for device in [
+        excel_schema.Device(**row) for row in dataframe.to_dict(orient="records")
+    ]:
+
+  operator	
+EQUAL	EQ
+NOT EQUAL	NE
+GREATER THAN	GT
+LESS THAN	LT
+GREATER OR EQUAL	GTE
+LESS OR EQUAL	LTE
+	
+	
+	
+	
+	
+EQUAL	
+NOT_EQUAL	
+GREATER_OR_EQUAL	
+GREATER	
+LESS	
+LESS_OR_EQUAL	
+LESS_OR_EQUAL	
+default_times
+temperature greater than Current device.SIMPLE_GT_temperature_THRESHOLD and SIMPLE_GT_temperature_ENABLED equal True
+temperature less than Current device.SIMPLE_LT_temperature_THRESHOLD and SIMPLE_LT_temperature_ENABLED equal True
+relativeHumidity greater or equal Current device.DURATION_GTE_relativeHumidity_THRESHOLD and DURATION_GTE_relativeHumidity_ENABLED equal True
+relativeHumidity less or equal Current device.DURATION_LTE_relativeHumidity_THRESHOLD and DURATION_LTE_relativeHumidity_ENABLED equal True
+illuminance greater than Current device.REPEATING_GT_illuminance_THRESHOLD and REPEATING_GT_illuminance_ENABLED equal True
+illuminance less than Current device.REPEATING_LT_illuminance_THRESHOLD and REPEATING_LT_illuminance_ENABLED equal True
+
+isOccupied equal Current device.SIMPLE_EQ_isOccupied_THRESHOLD and SIMPLE_EQ_isOccupied_ENABLED equal True
+isDisassembled not equal Current device.SIMPLE_NE_isDisassembled_THRESHOLD and SIMPLE_NE_isDisassembled_ENABLED equal True
+
+
+index.docker.io/atalces/iot-data-service-web-server
+
+index.docker.io/atalces/iot-data-service-pipelines
+
+etup argoCD auto update will pre-release version service
+
+for Base
+deleted variable
+```
+argocd_password         = ""
+```
+added variable
+```
+internal_service_password = ""
+```
+
+for application(username)
+deleted variable
+```
+cs_mosquitto_username            = ""
+cs_pg_user                       = ""
+minio_auth_root_user             = ""
+iot_gateway_webserver_username   = ""
+```
+added variable
+```
+internal_service_username = ""
+```
+
+for application(password)
+deleted variable
+```
+cs_mosquitto_password            = ""
+cs_pg_password                   = ""
+data_svc_tsdb_password           = ""
+minio_auth_root_password         = ""
+asset_mgmt_svc_neo4j_password    = ""
+iot_gateway_webserver_password   = ""
+argocd_password                  = ""
+```
+added variable
+```
+internal_service_password = ""
+```
+
+
+
+
+GET
+/probes/healthiness
+Healthiness
+
+
+MATCH (s:Site {name: 'asd'})-[r:isSiteOf]->()
+DELETE r,s
+
+MATCH (s:Site {name: 'testsite'})
+DELETE s
+
+create (s:Site {name:'testsite', displayname:'testsite', id:'78e71a60-326f-575b-9972-fb8b4f2df2f1'})
+match (s:Site {name:'testsite'}) match (t:Tenant {name:'UNSPECIFIED'}) create (s)-[:isSiteOf]->(t)
+
+create (d:Device {name:'testing'})
+
+
+match (d:Device {name:'testing'}) match (s:Site {name:'asd'}) create (d)-[:hasLocation]->(s)
+
+match (d:Device {name:'testing'}) DETACH DELETE d
+
+
+New RPC Message
+
+
+var newMsg = {};
+var ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)
+
+newMsg.method = "setValue" + ruleChainAttribute.sensorStatus;
+newMsg.params = msg.sensorStatus;
+msgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';
+
+return {msg: newMsg, metadata: metadata, msgType: msgType};
+
+Compatible with Iot platform tag 0.1.2
+Changes: 
+feat: Database aggregation table generation script documentation in README.md
+feat: Add thingsboard address variable for remote deployment to config Oauth information
+feat: Add fail message on create kafka topic script to avoid terraform fail to create resource
+Fix: `cms-webserver` using incorrect username password pair
+Fix: `grafana` not using generated client secret key
+Fix: thingsboard version fixed to `3.3.4.1`
+Fix: thingsboard memory limit increase to 4Gi
+Fix: data-service webserver memory limit increase to 400Mi
+
+Iot platform 0.1.2
+Changes:
+feat: frontend support device, gateway lora frame
+feat: frontend support device downlink
+feat: frontend login page
+feat: generate service-version.yaml file in CI pipeline for infrastructure
+fix: decoding script of Avantec-TA692FC make data-pipeline fail
+
+
+c640a431-2133-41aa-9be5-2d9c6c410dd0
+
+temperature greater or equal Current device.CRITICAL_SIMPLE_GE_temperature_THRESHOLD and CRITICAL_SIMPLE_GE_temperature_ENABLED equal True
+
+{
+  "tdradgt":{
+    "device_name": "Atlasen-LeoV2-ac1f09fffe0791bd",
+    "devEUI": "ac1f09fffe0791bd",
+    "device_profile": "Atlasen-LeoV2",
+    "f_port": "90",
+    "key": ["1","2","3","4","5","6","7","8","9"]
+  },
+  "tdradgt2":{
+    "device_name": "Atlasen-LeoV2-ac1f09fffe0791b2",
+    "devEUI": "ac1f09fffe0791b2",
+    "device_profile": "Atlasen-LeoV2",
+    "f_port": "90",
+    "key": ["2","2","3","4","5","6","7","8","9"]
+  }
+}
+
+
+IoT platform 0.1.3 is now available. This release includes the following changes:
+
+- iot-cms-webserver bacnet to sensor downlink related changes
+  - add `Avantec-TA692FC` encoding script
+  - add rule chain BACNET_TO_SENSOR (only for `Avantec-TA692FC` only in this monent)
+  - modify iot-gateway bacnet config
+
+- iot-cms-webserver keycloak import script
+  - Update/re-import a keycloak user will not reset user password
+
+- data-service pipeline error handling
+  - pipeline will not fail when importing incorrect data to database
+
+- Excel added sheet `BACKNET_TO_SENSOR` for downlink configuration
+
+Terraform 0.1.3 upadte:
+
+Fix: Thingsobard resource limit removed
+Fix: Thingsboard deployment timout increase to 10min
+
+feat: Thingsboard default device connection timeout form 10min increase to 45min
+feat: Remove minio related resource
+
+"ruleChainId": "$root_rule_chain_id"
+
+
+New RPC Message
+
+var newMsg = {};
+var ruleChainAttribute = JSON.parse(metadata.ss_ruleChainAttribute)
+
+newMsg.method = "setValue" + ruleChainAttribute.roomTemperature;
+newMsg.params = msg.roomTemperature;
+msgType = 'RPC_CALL_FROM_SERVER_TO_DEVICE';
+
+return {msg: newMsg, metadata: metadata, msgType: msgType};
+
+
+4789h3JWGCy6UfUZFPKC
+
+mysecret123
+
+IoT platform 0.1.7 release update:
+
+- iot-cms-webserver 
+  - bug fix of excel validation when validating device profile.
+  - BACnet rule chain update for senso8 LRS10701, LRS20310
+
+- alarm-service
+  - bug fix of enabling WebSocket
+
+- data-service
+  - bug fix of enabling WebSocket
+  - bug fix of casting float number to bool value
+
+CES infra 0.1.7 IoT-related update:
+
+- support uploading encrypted `tfvars` files to the repo
+  check `README.md` for more information
+
+- Modify Redis configuration to prevent corruption issues.
+
+    - name: TB_TRANSPORT_SESSIONS_INACTIVITY_TIMEOUT
+      value: "600000"
+
+      curl -v -X POST -d "{\"temperature\": 25}" https://172.16.14.49/api/v1/b2QVdUIAFmAWEG6cXuLQ/telemetry --header "Content-Type:application/json" -k
+
+
+IoT platform 0.1.9 release update:
+  - iot-cms-webserver
+    - Add new sensor GrinBean_Weight
+
+CES infra 0.1.9 IoT-related update:
+  - Fix Redis issue after power failure
+
+
+IoT platform 0.1.10 release update:
+  - iot-cms-webserver
+    - Update the root and send event to Kafka rule chain for alarm information.
+    - Optimize the send sensor reading to BACnet rule chain for better performance.
+    - Fix the data comparison bug in the BACnet to sensor rule chain.
+
+CES infra 0.1.10 IoT-related update:
+  - Thingsboard transport Sessions Inactivity Timeout increase to 1hr.
+
+
+
+
+real xmlns="http://obix.org/ns/schema/1.0" val="0.0" status="down" href="station:|slot:/Drivers/NiagaraNetwork/ENC_SC_01/points/DDC_B2_01/PAU_B2_01/CHW_Valve_St/out" is="def/baja:StatusNumeric" display="0.00 % {down,stale}" displayName="Out" icon="/ord?module://icons/x16/statusNumeric.png" unit="obix:units/percent">
+<style class="adjust-screen-brightness" media="screen">html::before { content: " "; z-index: 2147483647; pointer-events: none; position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.010000000000000009); }</style>
+</real>
+
+
+
+CES infra 0.2.0 IoT-related update:
+  - Remove remove dependency of data service and stateful message service to ThingsBoard deployment.
+
+NOTE: ALL VERSION UPGRADE FORM 0.1.X MUST APPLY THIS UPDATE FIRST BEFORE APPLYING 0.2.X.
+
+
+
+AirGuard-LRS10701-70b3d58c90000add
+
+AirGuard-LRS10701
+
+AirGuard ADD
+
+tester
+00060000000000030006000000000003
+
+CES infra 0.2.1 IoT-related update:
+  - Add thingsboard version tag, and thingsboard version upgrade to "3.5.0".
+
+Update procedure
+
+
+235
+ - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "postgresql.secretName" . }}
+                  key: {{ include "postgresql.userPasswordKey" . }}
+            {{- end }}
+            {{- if (include "postgresql.database" .) }}
+            - name: POSTGRES_DB
+              value: {{ (include "postgresql.database" .) | quote }}
+            {{- end }}
+
+match (n:Device {name:AirGuard-LRS10701-70B3D58C90000B51})--(r) return n, r
+
+
+
+temperature greater than Current device.CRITICAL_SIMPLE_GT_temperature_THRESHOLD and CRITICAL_SIMPLE_GT_temperature_ENABLED equal True and displayName not equal '|'
+
+temperature less or equal Current device.CRITICAL_SIMPLE_GT_temperature_CLEARTHRESHOLD and CRITICAL_SIMPLE_GT_temperature_AUTOCLEAR equal True and displayName not equal '|'
+
+relativeHumidity less or equal Current device.CRITICAL_DURATION_GT_relativeHumidity_CLEARTHRESHOLD and CRITICAL_DURATION_GT_relativeHumidity_AUTOCLEAR equal True
+
+
+IoT platform tag 0.3.0 is now available
+IoT platform 0.3.0 release update:
+
+- iot-cms-webserver
+  - Fix Data Service WS connection failed with client credential flow
+  - Fix Atlasen-AT04 decoding script
+  - Add Netvox-R718PE decoding script
+  - Fix rule chain not working with thingsboard 3.3.4.1 version
+  - Update Senso8-LRS20310 decoding script
+
+CES infra 0.3.0 IoT-related update:
+  - Add thingsboard pro deployment script
+
+
+
+
+IoT platform tag 0.3.1:
+
+IoT platform 0.3.1 release update:
+- iot-cms-webserver
+  - Alarm auto clear condition
+  - Change thingsboard api base on thingsboard version
+  - Sensor related update
+    Netvox R313LA Decoding Script
+    Netvox R720FU Decoding Script
+    Netvox R718WA Decoding Script
+    Old decoding script field name "isActive" changed to "isStatusOn"
+    STS-R3 and STS-R4 renamed to Yunhorn-R3 and Yunhorn-R4
+
+- alarm-service
+  - Fix alarm service image not exist issue
+
+CES infra 0.3.1 IoT-related update:
+  - Add thingsboard version to cms-webserver deployment
+  
+
+
+IoT platform tag 0.3.2:
+
+IoT platform 0.3.2 update:
+- iot-cms-webserver
+  - Fix pro version thingsboard get all device api issue
+  - Fix pro version thingsboard get user response format issue
+  - better design pattern
+- 
+CES infra 0.3.2 IoT-related update:
+  - Fix typo on cms-webserver environment 
+
+IoT platform tag 0.3.3:
+IoT platform 0.3.3 update:
+- iot-cms-webserver
+  - Fix rule chain not allow bacnet first data pass through issue
+  - Add alarm message for alarm and clear alarm
+   
+- Fix stateful message (delay message) service not working issue
+
+CES infra 0.3.3 IoT-related update: None
+ 
+ 2023-06-09 11:37:49.177302
+
+ 0.3.4 available now, IoT platform 0.3.4 update:
+ - iot-cms-webserver
+    update Netvox-R313LA, Netvox-R718J, Netvox-R718WB, Atlasen-AT04-2Packet
+   ERS-lite fields 
+   Suncent-X3 decoding script
+
+
+IoT platform tag 0.3.5:
+
+IoT platform 0.3.5 release update:
+- iot-cms-webserver
+  - Fix decimal value on alarm threshold
+  - configuration for backnet device pull period
+  - Edit get config endpoint to get current config not generate new config
+- stateful message service
+  - Fix gateway status inconsistent issue
+- iot-gateway-webserver
+  - create get config endpoint
+- iot-cms-frontend
+  - show iot-platform version number
+  - improve login flow
+  - update UI
+
+CES infra 0.3.5 IoT-related update:
+  - Update service-version format.
+  - Edit Grafana path form /dashboard to /report
+
+Upgrade note:
+  - download the latest version-report, it contains format changes.
+  - Update ansible code for iot-gateway-webserver deployment. Image is now atalces/iot-gateway-webserver:0.0.2.
+
+CRITICAL_SIMPLE_GE_roomTemperature_AUTOCLEAR
+
+2023-07-11 06:59:30,034 WARNING: Postgresql is not running.                                                                                                                                                 │
+│ 2023-07-11 06:59:35,038 ERROR: Request to server https://10.152.183.1:443 failed: ReadTimeoutError("HTTPSConnectionPool(host='10.152.183.1', port=443): Read timed out. (read timeout=4.993678405880928)")  │
+│ 2023-07-11 06:59:37,715 ERROR: Request to server https://10.152.183.1:443 failed: ReadTimeoutError("HTTPSConnectionPool(host='10.152.183.1', port=443): Read timed out. (read timeout=2.3156310743652284)") │
+│ 2023-07-11 06:59:38,256 WARNING: Concurrent update of data-svc-tsdb                                                                                                                                         │
+│ 2023-07-11 06:59:41,384 WARNING: Loop time exceeded, rescheduling immediately.                                                                                                                              │
+│ /var/run/postgresql:5432 - no response                                                                                                                                                                      │
+│ /var/run/postgresql:5432 - no response                                                                                                                                                                      │
+│ 2023-07-11 06:59:42 UTC [40]: [64acfddd.28-1] @,app= [00000] LOG:  starting PostgreSQL 14.5 (Ubuntu 14.5-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.2.0-19ubuntu1) 11.2.0, 64-bit    │
+│ 2023-07-11 06:59:42 UTC [40]: [64acfddd.28-2] @,app= [00000] LOG:  listening on IPv4 address "0.0.0.0", port 5432                                                                                           │
+│ 2023-07-11 06:59:43 UTC [40]: [64acfddd.28-3] @,app= [00000] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"                                                                             │
+│ 2023-07-11 06:59:43 UTC [44]: [64acfddf.2c-1] @,app= [00000] LOG:  database system was shut down in recovery at 2023-07-11 06:58:45 UTC                                                                     │
+│ 2023-07-11 06:59:43 UTC [45]: [64acfddf.2d-1] [unknown]@[unknown],app=[unknown] [00000] LOG:  connection received: host=[local]                                                                             │
+│ 2023-07-11 06:59:43 UTC [45]: [64acfddf.2d-2] postgres@postgres,app=[unknown] [57P03] FATAL:  the database system is starting up                                                                            │
+│ /var/run/postgresql:5432 - rejecting connections                                                                                                                                                            │
+│ 2023-07-11 06:59:43 UTC [47]: [64acfddf.2f-1] [unknown]@[unknown],app=[unknown] [00000] LOG:  connection received: host=[local]                                                                             │
+│ 2023-07-11 06:59:43 UTC [47]: [64acfddf.2f-2] postgres@postgres,app=[unknown] [57P03] FATAL:  the database system is starting up                                                                            │
+│ /var/run/postgresql:5432 - rejecting connections                                                                                                                                                            │
+│ 2023-07-11 06:59:43 UTC [44]: [64acfddf.2c-2] @,app= [00000] LOG:  entering standby mode                                                                                                                    │
+│ 2023-07-11 06:59:44 UTC [44]: [64acfddf.2c-3] @,app= [00000] LOG:  redo starts at 2/ED3C0230                                                                                                                │
+│ 2023-07-11 06:59:44 UTC [44]: [64acfddf.2c-4] @,app= [00000] LOG:  invalid record length at 2/ED424410: wanted 24, got 0                                                                                    │
+│ 2023-07-11 06:59:44 UTC [70]: [64acfde0.46-1] [unknown]@[unknown],app=[unknown] [00000] LOG:  connection received: host=[local]                                                                             │
+│ 2023-07-11 06:59:44 UTC [70]: [64acfde0.46-2] postgres@postgres,app=[unknown] [57P03] FATAL:  the database system is not yet accepting connections                                                          │
+│ 2023-07-11 06:59:44 UTC [70]: [64acfde0.46-3] postgres@postgres,app=[unknown] [57P03] DETAIL:  Consistent recovery state has not been yet reached.                                                          │
+│ 2023-07-11 06:59:44 UTC [72]: [64acfde0.48-1] [unknown]@[unknown],app=[unknown] [00000] LOG:  connection received: host=[local]                                                                             │
+│ 2023-07-11 06:59:44 UTC [72]: [64acfde0.48-2] postgres@postgres,app=[unknown] [57P03] FATAL:  the database system is not yet accepting connections                                                          │
+│ 2023-07-11 06:59:44 UTC [72]: [64acfde0.48-3] postgres@postgres,app=[unknown] [57P03] DETAIL:  Consistent recovery state has not been yet reached.                                                          │
+│ /var/run/postgresql:5432 - rejecting connections                                                                                                                                                            │
+│ 2023-07-11 06:59:45 UTC [74]: [64acfde1.4a-1] [unknown]@[unknown],app=[unknown] [00000] LOG:  connection received: host=[local]                                                                             │
+│ 2023-07-11 06:59:45 UTC [74]: [64acfde1.4a-2] postgres@postgres,app=[unknown] [57P03] FATAL:  the database system is not yet accepting connections                                                          │
+│ 2023-07-11 06:59:45 UTC [74]: [64acfde1.4a-3] postgres@postgres,app=[unknown] [57P03] DETAIL:  Consistent recovery state has not been yet reached.                                                          │
+│ /var/run/postgresql:5432 - rejecting connections                                                                                                                                                            │
+│ 2023-07-11 06:59:46 UTC [76]: [64acfde2.4c-1] [unknown]@[unknown],app=[unknown] [00000] LOG:  connection received: host=[local]                                                                             │
+│ 2023-07-11 06:59:46 UTC [76]: [64acfde2.4c-2] postgres@postgres,app=[unknown] [57P03] FATAL:  the database system is not yet accepting connections                                                          │
+│ 2023-07-11 06:59:46 UTC [76]: [64acfde2.4c-3] postgres@postgres,app=[unknown] [57P03] DETAIL:  Consistent recovery state has not been yet reached.                                                          │
+│ /var/run/postgresql:5432 - rejecting connections
+
+
+IoT platform tag 0.3.6:
+
+IoT platform 0.3.6 release update:
+- iot-cms-webserver
+  - Task ID: ITP-604 sensor to sensor rule chain for moxaR1241
+  - Task ID: ITP-637 blacking when excel validation failed
+- stateful message service
+  - Bug fix
+
+MATCH (d:Device) WHERE d.name CONTAINS '' AND d.displayName CONTAINS ''
+MATCH (d)-[:hasLocation]->(s:Site)
+MATCH (d)-[:hasPoint]->(f:Field)
+MATCH (d)-[:hasGroup]->(g: Group)
+RETURN  d.id AS id, d.name AS name, d.displayName AS displayName,
+collect(f.name) AS fields, 
+s.id AS siteId, g.name AS group
+SKIP 0 LIMIT 50
+
+Yesterday
+
+Develop infix to postfix conversion functionalities (AP-1324)
+
+Today
+
+Resolve code review for infix to postfix conversion functionalities (AP-1324)
+
+Issue
+
+N.A.Modification for multisite compatible
+
+IoT platform tag 0.3.7:
+
+IoT platform 0.3.7 release update:
+- asset-management-service
+  - Task ID: ITP-650 "Add displayName as query parameter"
+- iot-cms-webserver
+  - rename MOXA-ioLogik-R1241_to_MOXA-ioLogikR1241
+  - rename Atlasen-AT04-2Packet Name to Atlasen-WELL
+/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.css'
+
+sites/{site_id}
+
+tls.enabled
+tls.autoGenerated
+tls.existingSecret
+tls.usePem
+tls.truststoreFilename
+tls.keystoreFilename
+tls.keystorePassword
+tls.truststorePassword
+tls.passwordsSecret
+
+>>> str(uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="ATALDEV"))
+'78e71a60-326f-575b-9972-fb8b4f2df2f5'
+>>> str(uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="ATALSTAG"))
+'2729a7cc-2474-5708-9573-58da8bc7d32d'
+>>> str(uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="ATALPROD"))
+'cd6a877f-6432-55bc-9d19-1fbb22e4d831'
+
+78e71a60-326f-575b-9972-fb8b4f2df2f5
+
+
+78e71a60-326f-575b-9972-fb8b4f2df2f5
+
+
+78e71a60-326f-575b-9972-fb8b4f2df2f5
+
+
+ATALDEV
+
+"ruleChainId": "$root_rule_chain_id"
+
+
+bms-data-service-v2-pipeline-lint-and-test:
+  variables:
+    PROGRAM_PATH: "internal-services/bms-data-service/pipeline"
+    LINT_CHECK_PATH: "src"
+    TYPE_CHECK_PATH: "src"
+    PYTEST_PATH: "src"
+    PYTHON_VERSION: "3.11"
+    CONFIG_MYPY_IN_TOML: "yes"
+  extends: .common-lint-and-test-and-coverage
+
+
+bms-data-service-build:
+  variables:
+    SERVICE_ROOT_DIRECTORY: "internal-services/bms-data-service"
+    CI_REGISTRY_NAME: index.docker.io/atalces/bms-data-service
+    SUB_COMPONENTS: "-web-server -pipeline"
+  extends: [.build-and-push-docker-image, .extract-docker-image-tag, .build-rules]
+
+bms-data-service-helm:
+  needs:
+    - job: bms-data-service-build
+      artifacts: true
+  variables:
+    SERVICE_ROOT_DIRECTORY: "internal-services/bms-data-service"
+  extends: [.push-helm-chart, .extract-helm-chart-version, .build-rules]
+
+{
+    "deviceName": "Avantec-TA692FC-0012bdfffe02acc4",
+    "deviceType": "Avantec-TA692FC",
+    "ss_ruleChainAttribute": "{\"setTemperature\":\"AnalogValue-34\"}",
+    "ts": "1693452581093"
+}
+
+
+Handle pipeline old data input (AP-1648)
